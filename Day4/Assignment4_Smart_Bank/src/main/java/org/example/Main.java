@@ -1,17 +1,36 @@
 package org.example;
 
+
+import org.example.models.Account;
+import org.example.models.SavingsAccount;
+
+
+import org.example.transactions.UPITransaction;
+import org.example.transactions.CardTransaction;
+import org.example.interfaces.TransactionProcessor;
+
+
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+//        Account acc = new SavingsAccount("HDF00011", "Vignesh", 10000);
+//        acc.printAccountDetails();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        TransactionProcessor upi = new UPITransaction();
+        TransactionProcessor card = new CardTransaction();
+
+        System.out.println("Testing Transactions:\n");
+
+        upi.process(500);
+        upi.printReceipt();
+
+        card.process(1000);
+        card.printReceipt();
+
+        upi.refund(200);
+        card.refund(300);
+
     }
 }
