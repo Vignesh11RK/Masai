@@ -13,7 +13,6 @@ public class SavingsAccount extends Account{
     }
 
     public void applyCashback(String type){
-
         System.out.println("Cashback applied for :" +type);
     }
 

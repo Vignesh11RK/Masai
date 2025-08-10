@@ -41,12 +41,10 @@ public abstract class Account {
     }
 
     public void printAccountDetails(){
-        System.out.println("here goes ur account details");
+        System.out.println("Here goes your account details");
     }
 
     public abstract double calculateMonthlyInterest();
-
-
 
 
 }
