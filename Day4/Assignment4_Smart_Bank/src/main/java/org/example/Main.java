@@ -103,7 +103,7 @@ public class Main {
 
         System.out.println("Classes that successfully refunded:");
 
-        System.out.println("\n✅ Classes that successfully refunded:");
+        System.out.println("\n Classes that successfully refunded:");
 
         // remember that I should npt use the same variables for different blocks
 
