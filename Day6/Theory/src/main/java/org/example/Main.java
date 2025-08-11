@@ -46,7 +46,6 @@ public class Main {
             System.out.println(emp);
         }
 
-
         //Hashset
         HashSet<String> set=new HashSet<>();
         // adding elements
@@ -65,11 +64,42 @@ public class Main {
         set.remove("Cherry");
         System.out.println("After removing Cherry: " + set);
 
-        // Iterate over the HashSet
-        System.out.println("Iterating over HashSet:");
-        for (String fruit : set) {
-            System.out.println(fruit);
+        // Iterate over the Hashmap
+
+
+        //Using Entry set
+        Set<Map.Entry<Integer, Employee>> entrySet = map.entrySet();
+        for (Map.Entry<Integer, Employee> entry : entrySet) {
+            Integer key = entry.getKey();
+            Employee value = entry.getValue();
+            System.out.println("Key: " + key + ", Value: " + value);
         }
 
+
+        //using Key set for iteration
+        for (Integer key : map.keySet()) {
+            Employee value = map.get(key);
+            System.out.println("Key: " + key + ", Value: " + value);
+        }
+
+//       using for each
+        map.forEach((key, value) -> {
+            System.out.println("Key: " + key + ", Value: " + value);
+        });
+
+        //Box class
+        Box<String> stringBox=new Box<>();
+        stringBox.setValue("VK");
+        System.out.println(stringBox.getValue());
+
+
+//
+//        String typee="Christmas";
+//        Discount d=new ChristmasDiscount() ;
+//        System.out.println(d.getDiscount());
+
+
     }
+
+
 }
