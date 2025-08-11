@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Assignment4_Smart_Bank" />
+        <module name="Theory" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
