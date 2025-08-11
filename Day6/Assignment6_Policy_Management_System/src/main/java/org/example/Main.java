@@ -12,11 +12,11 @@ public class Main {
     public static void main(String[] args) {
         PolicyService service = PolicyService.getInstance();
 
-        // === Register policy types with the factory ===
+        // Register policy types with the factory 
         PolicyFactory.registerPolicyType("LIFE", (id, premium, term) -> new LifeInsurancePolicy(id, premium, term));
         PolicyFactory.registerPolicyType("HEALTH", (id, premium, term) -> new HealthInsurance(id, premium, term));
 
-        // === Add Customers ===
+        // Addind Customers
         Customer c1 = new Customer("C001", "Alice", 30);
         Customer c2 = new Customer("C002", "Bob", 45);
         Customer c3 = new Customer("C003", "Charlie", 28);
@@ -25,31 +25,31 @@ public class Main {
         service.addCustomer(c2);
         service.addCustomer(c3);
 
-        // === Add Policies via Factory ===
+        //  Add Policies with Factory
         service.addPolicy("C001", PolicyFactory.createPolicy("LIFE", "P001", 5000, 10));
         service.addPolicy("C001", PolicyFactory.createPolicy("HEALTH", "P002", 3000, 5));
         service.addPolicy("C002", PolicyFactory.createPolicy("LIFE", "P003", 7000, 15));
         service.addPolicy("C003", PolicyFactory.createPolicy("HEALTH", "P004", 2000, 7));
 
-        // === List All Customers and Their Policies ===
+        //  List All Customers and Their Policies 
         System.out.println("\n--- All Customers and Policies ---");
         printAllCustomers(service);
 
-        // === Calculate Total Maturity for a Customer ===
+        // Calculate Total Maturity for a Customer 
         System.out.println("\n--- Total Maturity for C001 ---");
         double maturity = service.calculateTotalMaturity("C001");
         System.out.println("Total Maturity Amount: " + maturity);
 
-        // === Remove a Policy from a Customer ===
+        // Remove a Policy from a Customer 
         System.out.println("\n--- Removing Policy P002 from C001 ---");
         service.removePolicy("C001", "P002");
         service.printCustomerDetails("C001");
 
-        // === Remove a Customer ===
+        //  Remove a Customer 
         System.out.println("\n--- Removing Customer C003 ---");
         service.removeCustomer("C003");
 
-        // === Display Customers Sorted by Name (TreeMap) ===
+        //  Display Customers Sorted by Name (TreeMap) 
         System.out.println("\n--- Customers Sorted by Name ---");
         TreeMap<String, Customer> sortedByName = new TreeMap<>();
         for (Customer cust : getAllCustomers(service)) {
@@ -59,7 +59,7 @@ public class Main {
             System.out.println("Name: " + entry.getKey() + ", ID: " + entry.getValue().getCustomerId());
         }
 
-        // === Display Policies Sorted by Premium Amount (Custom Comparator) ===
+        //  Display Policies Sorted by Premium Amount (Custom Comparator) 
         System.out.println("\n--- All Policies Sorted by Premium Amount ---");
         List<Policy> allPolicies = getAllCustomers(service).stream()
                 .flatMap(cust -> cust.getPolicies().values().stream())
@@ -71,7 +71,7 @@ public class Main {
                     ", Premium: " + policy.getPremiumAmount());
         }
 
-        // === Iterate over Policies Using keySet() ===
+        //  Iterate over Policies Using keySet() 
         System.out.println("\n--- Iterate Using keySet() ---");
         Customer customer = service.getCustomer("C001");
         if (customer != null) {
@@ -80,7 +80,7 @@ public class Main {
             }
         }
 
-        // === Iterate over Policies Using entrySet() ===
+        //  Iterate over Policies Using entrySet() 
         System.out.println("\n--- Iterate Using entrySet() ---");
         if (customer != null) {
             for (Map.Entry<String, Policy> entry : customer.getPolicies().entrySet()) {
@@ -89,7 +89,7 @@ public class Main {
             }
         }
 
-        // === Iterate over Policies Using forEach() ===
+        //  Iterate over Policies Using forEach() 
         System.out.println("\n--- Iterate Using forEach() ---");
         if (customer != null) {
             customer.getPolicies().forEach((id, pol) ->
