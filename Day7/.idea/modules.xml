@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Adapter_Pattern/Adapter_Pattern.iml" filepath="$PROJECT_DIR$/Adapter_Pattern/Adapter_Pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day7.iml" filepath="$PROJECT_DIR$/Day7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Decorator_Pattern/Decorator_Pattern.iml" filepath="$PROJECT_DIR$/Decorator_Pattern/Decorator_Pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Observer_Pattern/Observer_Pattern.iml" filepath="$PROJECT_DIR$/Observer_Pattern/Observer_Pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Strategy_Pattern/Strategy_Pattern.iml" filepath="$PROJECT_DIR$/Strategy_Pattern/Strategy_Pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Theory/Theory.iml" filepath="$PROJECT_DIR$/Theory/Theory.iml" />
+    </modules>
+  </component>
+</project>
