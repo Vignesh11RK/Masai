@@ -1,15 +1,14 @@
-public class MyThread extends Thread {
+public class MyThread extends Thread{
 
+    @Override
     public void run(){
-        for(int i=0;i<100;i++){
-            System.out.println(i+"from" +Thread.currentThread().getName()+"Thread");
+        for (int i=0;i<100;i++){
+            System.out.println(i+" from "+Thread.currentThread().getName()+" Thread");
             try{
                 Thread.sleep(1000);
-            }
-            catch (InterruptedException e){
+            }catch (InterruptedException e){
                 e.getStackTrace();
             }
         }
     }
-
 }
