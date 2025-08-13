@@ -2,13 +2,9 @@ package org.example.app;
 
 import org.example.model.order.Order;
 import org.example.model.restaurant.*;
-import org.example.model.users.Customer;
-import org.example.model.users.RestaurantOwner;
-import org.example.model.users.SystemAdmin;
 import org.example.service.repository.DataStore;
 import org.example.service.strategy.NoDiscount;
 import org.example.service.strategy.PercentageDiscount;
-import org.example.util.InputUtil;
 
 import java.util.Comparator;
 import java.util.List;
