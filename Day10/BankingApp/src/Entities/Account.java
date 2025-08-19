@@ -3,6 +3,7 @@ package Entities;
 import Exceptions.InsufficientBalance;
 import Exceptions.LessValue;
 import enums.AccountType;
+import enums.TransactionType;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -13,6 +14,30 @@ public abstract class Account {
     private String customerId;
     private AccountType type;
     private BigDecimal balance;
+
+    private TransactionType typo;
+    private String toAccount;
+
+    public Account(TransactionType typo, String toAccount) {
+        this.typo = typo;
+        this.toAccount = toAccount;
+    }
+
+    public TransactionType getTypo() {
+        return typo;
+    }
+
+    public void setTypo(TransactionType typo) {
+        this.typo = typo;
+    }
+
+    public String getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(String toAccount) {
+        this.toAccount = toAccount;
+    }
 
     public Account() {
 
@@ -100,4 +125,16 @@ public abstract class Account {
     public BigDecimal calculateInterestRate(){
         return balance.multiply(getInterestRate()).divide(new BigDecimal(100));
     }
+//
+//
+//    private static void performTransfer(){
+//        System.out.println("Enter source account no : ");
+//        String fromAccountNO=scanner.nextLine().trim();
+//
+//    }
+
+
+
+
+
 }

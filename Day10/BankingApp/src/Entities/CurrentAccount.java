@@ -21,6 +21,9 @@ public class CurrentAccount extends Account {
         super(accountNo, customerId, AccountType.CURRENT, balance);
     }
 
+    public CurrentAccount(String accountNo, String cutomerId, BigDecimal initialBalance) {
+    }
+
     @Override
     public BigDecimal getInterestRate() {
         return null;

@@ -2,7 +2,8 @@ package enums;
 
 public enum TransactionType {
     DEPOSIT("Deposit"),
-    WITHDRAW("Withdraw");
+    WITHDRAW("Withdraw"),
+    TRANSFER("Transfer");
 
     private final String displayName;
 
