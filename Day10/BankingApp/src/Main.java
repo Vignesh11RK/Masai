@@ -195,7 +195,6 @@ public class Main {
         }
     }
 
-
     private static void performDeposit() {
         System.out.println("enter account no");
         String accountNo = scanner.nextLine().trim();
@@ -205,7 +204,6 @@ public class Main {
             System.out.println("Account not found");
             return;
         }
-
 
         System.out.println("Enter deposit amount");
         String amountStr = scanner.nextLine().trim();
