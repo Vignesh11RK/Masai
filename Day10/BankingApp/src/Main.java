@@ -49,20 +49,42 @@ public class Main {
         System.out.println("4.VIEW ACCOUNT DETAILS");
 
         System.out.println("5.VIEW TRANSACTION HISTORY");
-        System.out.println("5.EXIT");
+        System.out.println("6.EXIT");
+     //   System.out.println("7. Demo Mode (Complete Flow)");
+
         System.out.println("ENTER UR CHOICE");
 
         int choice = getInput();
         switch (choice) {
-            case 1:
-                registerCustomer();
+            case 1:registerCustomer();
                 break;
-            case 2:
 
-//                case 3:
-//                    performTransaction();
+            case 2:
+                createAccount();
+                break;
+
+            case 3:
+                performTransaction();
+                break;
+
+            case 4:
+                viewAccountDetails();
+                break;
+            case 6:
+                System.out.println("Exiting... Thank you!");
+                System.exit(0); // or return if inside loop
+                break;
+
+//            case 7:
+//                runDemoMode();
+//                break;
+
+            default:
+                System.out.println("Invalid choice! Please select a valid option.");
+                break;
 
         }
+
 
     }
 
@@ -121,53 +143,121 @@ public class Main {
     }
 
 
-    private static void createAccount() {
-        System.out.println("\n ==Create new Account==");
-        System.out.println("Please enter cutomer Id");
-        String cutomerId = scanner.nextLine().trim();
+//    private static void createAccount() {
+//        System.out.println("\n ==Create new Account==");
+//        System.out.println("Please enter cutomer Id");
+//        String cutomerId = scanner.nextLine().trim();
+//
+//        Customer customer = customers.get(cutomerId);
+//        if (customer == null) {
+//            System.out.println("Customer not found");
+//            return;
+//        }
+//
+//        System.out.println("Choose account type ");
+//        System.out.println("1) Savings Account (6% Interest rate and min balance of 10,000");
+//        System.out.println("2)Current Account (6 % Interest rate and no min balance) ");
+//        System.out.println("Select Account type");
+//
+//        int typeChoice = getInput();
+//
+//        Account account = new Account() {
+//            @Override
+//            public BigDecimal getInterestRate() {
+//                return null;
+//            }
+//
+//            @Override
+//            public BigDecimal getMinimumBalance() {
+//                return null;
+//            }
+//        };
+//        account.setBalance(account.getBalance()); // assuming you have a setter
+//
+//        System.out.println("Enter initial balance: ");
+//        String balance = scanner.nextLine().trim();
+//
+//        try {
+//            BigDecimal initialBalance = new BigDecimal(balance);
+//            String accountNo = account.getAccountNo();
+//
+//            switch (typeChoice) {
+//                case 1:
+//                    account = new SavingsAccount(accountNo, cutomerId, initialBalance);
+//                    break;
+//                case 2:
+//                    account = new CurrentAccount(accountNo, cutomerId, initialBalance);
+//                    break;
+//
+//                default:
+//                    System.out.println("Invalid account type");
+//                    return;
+//            }
+//
+//            accounts.put(accountNo, account);
+//            System.out.println("Congrats account created successfully"+account.getAccountNo());
+//
+//        } catch (NumberFormatException e) {
+//            System.out.println("Invalid balance amount !");
+//        }
+//
+//    }
+//
 
-        Customer customer = customers.get(cutomerId);
+
+    private static void createAccount() {
+        System.out.println("\n== Create New Account ==");
+        System.out.println("Please enter customer ID:");
+        String customerId = scanner.nextLine().trim();
+
+        Customer customer = customers.get(customerId);
         if (customer == null) {
-            System.out.println("Customer not found");
+            System.out.println("Customer not found.");
             return;
         }
 
-        System.out.println("Choose account type ");
-        System.out.println("1) Savings Account (6% Interest rate and min balance of 10,000");
-        System.out.println("2)Current Account (6 % Interest rate and no min balance) ");
-        System.out.println("Select Account type");
-
+        System.out.println("Choose account type:");
+        System.out.println("1) Savings Account (6% Interest rate and min balance of 10,000)");
+        System.out.println("2) Current Account (6% Interest rate and no min balance)");
+        System.out.print("Select Account Type: ");
         int typeChoice = getInput();
-        Account account = null;
 
-        System.out.println("Enter initial balance: ");
-        String balance = scanner.nextLine().trim();
+        System.out.print("Enter initial balance: ");
+        String balanceInput = scanner.nextLine().trim();
 
         try {
-            BigDecimal initialBalance = new BigDecimal(balance);
-            String accountNo = account.getAccountNo();
+            BigDecimal initialBalance = new BigDecimal(balanceInput);
+
+            // Generate account number (can be improved)
+            String accountNo = "ACC" + (accounts.size() + 1001);
+
+            Account account;
 
             switch (typeChoice) {
                 case 1:
-                    account = new SavingsAccount(accountNo, cutomerId, initialBalance);
+                    account = new SavingsAccount(accountNo, customerId, initialBalance);
                     break;
                 case 2:
-                    account = new CurrentAccount(accountNo, cutomerId, initialBalance);
+                    account = new CurrentAccount(accountNo, customerId, initialBalance);
                     break;
-
                 default:
-                    System.out.println("Invalid account type");
+                    System.out.println("Invalid account type selected.");
                     return;
             }
 
-            accounts.put(accountNo, account);
-            System.out.println("Congrats account created successfully");
+            accounts.put(accountNo, account); // Save to map
+            System.out.println("Congrats! Account created successfully.");
+            System.out.println("Your Account Number is: " + account.getAccountNo());
 
         } catch (NumberFormatException e) {
-            System.out.println("Invalid balance amount !");
+            System.out.println("Invalid balance amount!");
         }
-
     }
+
+
+
+
+
 
     private static String generateAccountNo() {
         return String.format("%10d", System.currentTimeMillis());
@@ -194,6 +284,29 @@ public class Main {
 
         }
     }
+
+    private static void performTransaction(){
+        System.out.println("\n=====Perform Transaction===");
+        System.out.println("1. Deposit");
+        System.out.println("2. Withdraw");
+        System.out.println("3. Transfer");
+
+        System.out.println("Select Transaction type");
+        int transactionChoice = getInput();
+
+        switch (transactionChoice){
+            case 1:
+                performDeposit();
+                break;
+            case 2:
+                performWithdraw();
+                break;
+            case 3:
+                performTransfer();
+                break;
+        }
+    }
+
 
     private static void performDeposit() {
         System.out.println("enter account no");
@@ -326,44 +439,104 @@ public class Main {
     }
 
 
-    private static void viewTransactionHistory(){
-        System.out.println("\n===Transaction History===");
-        System.out.println("Konsa Account ka Transaction Dekhna hai");
+    private static void viewTransactionHistory() {
+        System.out.println("\n=== Transaction History ===");
+        System.out.println("Enter Account Number:");
 
-        String AccountNo = sc.nextLine().trim();
-        Account account = accounts.get(AccountNo);
+        String accountNo = sc.nextLine().trim();
 
-        if (account==null){
-            System.out.println("Account not found");
+        Account account = accounts.get(accountNo);
+
+        if (account == null) {
+            System.out.println("Account not found.");
             return;
         }
-        List<Transaction> accountTransaction = transactions.stream()
-                .filter(t->t.getAccountNo().equals(AccountNo))
+// putting the transactions in the stream
+        List<Transaction> accountTransactions = transactions.stream()
+                .filter(t -> t.getAccountNo().equals(accountNo))
                 .sorted(Comparator.comparing(Transaction::getTimestamp).reversed())
                 .toList();
 
-        if (accountTransaction.isEmpty())
-        {
-            System.out.println("No transactions found");
+        if (accountTransactions.isEmpty()) {
+            System.out.println("No transactions found.");
             return;
         }
 
-        for (Transaction transaction:accountTransaction)
-        {
-            System.out.println(transaction.toString());
+        System.out.println("\n--- Transaction List ---");
+        for (Transaction transaction : accountTransactions) {
+            System.out.println(transaction); // Ensure Transaction has a meaningful toString()
         }
 
-        Map<TransactionType,Long> transactionSummary = accountTransaction.stream()
+        Map<TransactionType, Long> transactionSummary = accountTransactions.stream()
                 .collect(Collectors.groupingBy(Transaction::getType, Collectors.counting()));
 
-        System.out.println("===Transaction Summary===");
-        transactionSummary.forEach((type,count)->
-        {
-            System.out.println(type.getDisplayName()+" "+count);
+        System.out.println("\n=== Transaction Summary ===");
+        transactionSummary.forEach((type, count) -> {
+            System.out.println(type.getDisplayName() + ": " + count);
         });
-
     }
 
 
-}
+//    private static void runDemoMode() {
+//        System.out.println("\n=== Demo Mode - Complete Banking Flow ===");
+//
+//        // Step 1: Register demo customers
+//        Customer demo1 = new Customer("CUST1001", "Alice", "alice@example.com");
+//        Customer demo2 = new Customer("CUST1002", "Bob", "bob@example.com");
+//        customers.put(demo1.getCustomerID(), demo1);
+//        customers.put(demo2.getCustomerID(), demo2);
+//        System.out.println("✓ Customers registered successfully");
+//
+//        // Step 2: Create demo accounts
+//        Account savings = new SavingsAccount("ACC1001", demo1.getCustomerID(), new BigDecimal("5000"));
+//        Account current = new CurrentAccount("ACC1002", demo2.getCustomerID(), new BigDecimal("2000"));
+//        accounts.put(savings.getAccountNo(), savings);
+//        accounts.put(current.getAccountNo(), current);
+//        System.out.println("✓ Accounts created successfully");
+//
+//      //   Step 3: Perform transactions
+//        savings.deposit(new BigDecimal("1000"));
+//        transactions.add(new Transaction(savings.getAccountNo(), TransactionType.DEPOSIT, new BigDecimal("1000")));
+//        System.out.println("✓ Deposit successful");
+//
+//        current.withdraw(new BigDecimal("500"));
+//        transactions.add(new Transaction(current.getAccountNo(), TransactionType.WITHDRAW, new BigDecimal("500")));
+//        System.out.println("✓ Withdrawal successful");
+//
+//        savings.transfer(current, new BigDecimal("800"));
+//        transactions.add(new Transaction(savings.getAccountNo(), TransactionType.TRANSFER, new BigDecimal("800")));
+//        System.out.println("✓ Transfer successful");
+//
+//        // Step 4: Show balances + interest
+//        System.out.println("\n4. Account details:");
+//        System.out.println("Savings Account: " + savings.getBalance() +
+//                " (Interest: " + savings.calculateInterest() + ")");
+//        System.out.println("Current Account: " + current.getBalance() +
+//                " (Interest: " + current.calculateInterest() + ")");
+//
+//        // Step 5: Stream-based transaction history
+//        System.out.println("\n5. Transaction history (using Java 8 Streams):");
+//        transactions.stream()
+//                .filter(tx -> tx.getAccountNo().equals(savings.getAccountNo()))
+//                .sorted(Comparator.comparing(Transaction::getTimestamp))
+//                .forEach(tx -> System.out.println("  " + tx.getType() + " - " + tx.getAmount() + " at " + tx.getTimestamp()));
+//
+//        // Step 6: Polymorphism demo
+//        System.out.println("\n6. Demonstrating polymorphism:");
+//        List<Account> demoAccounts = Arrays.asList(savings, current);
+//        for (Account acc : demoAccounts) {
+//            System.out.println("  " + acc.getClass().getSimpleName()
+//                    + " - Min Balance: " + acc.getMinimumBalance()
+//                    + ", Interest Rate: " + acc.getInterestRate() + "%");
+//        }
+//
+//        System.out.println("\n=== Demo completed successfully! ===");
+//        System.out.println("All Java concepts demonstrated: OOP, Inheritance, Polymorphism,");
+//        System.out.println("Collections, Streams, Lambdas, Exception Handling.");
+    }
+
+
+
+
+
 

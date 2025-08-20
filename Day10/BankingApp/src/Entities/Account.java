@@ -125,13 +125,24 @@ public abstract class Account {
     public BigDecimal calculateInterestRate(){
         return balance.multiply(getInterestRate()).divide(new BigDecimal(100));
     }
-//
-//
+
+
 //    private static void performTransfer(){
 //        System.out.println("Enter source account no : ");
 //        String fromAccountNO=scanner.nextLine().trim();
 //
 //    }
+
+    public void transfer(Account toAccount, BigDecimal amount) {
+        this.withdraw(amount);
+        toAccount.deposit(amount);
+    }
+
+    public BigDecimal calculateInterest() {
+        return balance.multiply(getInterestRate()).divide(BigDecimal.valueOf(100));
+    }
+
+
 
 
 

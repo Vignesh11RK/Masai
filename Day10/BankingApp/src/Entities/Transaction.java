@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Transaction {
+
     private String TransactionId;
     private BigDecimal amount;
     private String accountNo;
@@ -14,28 +15,52 @@ public class Transaction {
     private TransactionType type;
     private String toAccountNo;
 
-    public Transaction(String accountNo, BigDecimal amount, LocalDateTime now, String transactionsId, TransactionType transactionType) {
-    }
-
-    public Transaction(String toAccountNo) {
-        this.toAccountNo = toAccountNo;
-    }
-
-    public Transaction(String fromAccountNo, BigDecimal amount, LocalDateTime now, String transactionId, TransactionType transactionType, String toAccountNoStr) {
-    }
+//    public Transaction(String accountNo, BigDecimal amount, LocalDateTime now, String transactionsId, TransactionType transactionType) {
+//    }
+//
+//    public Transaction(String toAccountNo) {
+//        this.toAccountNo = toAccountNo;
+//    }
+//
+//    public Transaction(String fromAccountNo, BigDecimal amount, LocalDateTime now, String transactionId, TransactionType transactionType, String toAccountNoStr) {
+//    }
+//
+//    public Transaction(String accountNo, TransactionType transactionType, BigDecimal bigDecimal) {
+//    }
 
     public void Transaction(){
     }
 
-    public Transaction(String transactionId, BigDecimal amount, String accountNo, LocalDateTime timestamp, TransactionType type) {
-        TransactionId = transactionId;
-        this.amount = amount;
+    public Transaction(String accountNo, TransactionType type, BigDecimal amount) {
         this.accountNo = accountNo;
+        this.type = type;
+        this.amount = amount;
+        this.timestamp = LocalDateTime.now();
+        this.TransactionId = "TXN" + System.currentTimeMillis();
+    }
+
+    public Transaction(String accountNo, BigDecimal amount, LocalDateTime timestamp, String transactionId, TransactionType type, String toAccountNo) {
+        this.accountNo = accountNo;
+        this.amount = amount;
         this.timestamp = timestamp;
+        this.TransactionId = transactionId;
         this.type = type;
         this.toAccountNo = toAccountNo;
-
     }
+
+    public Transaction(String accountNo, BigDecimal amount, LocalDateTime timestamp, String transactionId, TransactionType type) {
+        this.accountNo = accountNo;
+        this.amount = amount;
+        this.timestamp = timestamp;
+        this.TransactionId = transactionId;
+        this.type = type;
+        this.toAccountNo = null; // no toAccount for deposit or withdraw
+    }
+
+
+
+
+
 
     public String getToAccountNo() {
         return toAccountNo;

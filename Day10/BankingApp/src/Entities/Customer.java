@@ -16,6 +16,9 @@ public class Customer {
         this.date = date;
     }
 
+    public Customer(String cust1001, String alice, String mail) {
+    }
+
     public LocalDate getDate() {
         return date;
     }
