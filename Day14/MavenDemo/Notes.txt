@@ -1,0 +1,121 @@
+.java --> compile --> .class file -> zip together -->Jar File
+
+class multithreading{
+
+}
+
+client, server
+backend applicable  -- baniking app(client) -->mysql(server)
+
+JDBC becomes the client :
+
+Steps of using JDBC Client:
+1)Integrate all the jar file to your class path
+2)Connection establish
+3)Sql query subit
+4)Execution done by the sql server
+5)Response from server.
+6)Process the data received
+7)Deal with the exception
+
+Layered Architecture:
+
+
+1)Maintaining the business data
+2)Processing the data
+3)Presenting it to the client in a user understandble format
+
+
+Application{
+Data Access logic(DAO Layer) : Communicating with the DB
+Business Logic(Service Layer) :Logical operations
+Presentation Logic :Displaying the info to the client
+}
+
+What if we dont follow the Architecture?
+-Modification will be tough since it wont be organised
+-Testing will also be tough
+-Collaboration will also be tough
+
+
+
+1.Presentation Layer
+2.Service Layer
+3.Data Access Layer
+
+
+ORM (Object Relational Mapping)
+Data Access Layer
+
+JAVA PERSISTENCE:
+-DB only stores primitive values
+- The process of SAVING THE STATE OF THE OBJ :PERSISTENCE
+-SERIALIZATION
+
+JDBC takes Sql queries in the form of strings
+- Managing Connection
+- Exceptions management
+
+
+
+ORM(Object Relational mapping)
+User{
+id,
+name,
+balance
+}
+
+user U1 = new User (1,"Ratan", 10000);
+
+
+Hibernate: JPA
+Toplink: JPA etc.
+
+n no of ORMS
+Std api implementation for all the ORMs
+JPA won't change, specification
+JPA: Java Persistence API
+
+JPA-->JPQL(JAVA PERSISTENCE QUERY LANGUAGE)
+
+// Business Level Application//
+
+J2EE,J2SE,J2ME- // SPECIFICATIONS //
+
+J2SE-CORE JAVA
+J2EE-ENTERPRISE LEVEL EDITION
+J2ME-MICRO EDITION
+
+
+J2EE:SPECIFICATION (IMPLEMENTATION OF APPLICATION SERVER SOFTWARE)
+JDBC:JDBC DRIVER SOFTWARE
+JPA:IMPLEMENTATION OF ORM SOFTWARE
+
+
+CHALLENGES IN ENTERPRISE LEVEL APPLICATION
+1)DATA SECURITY:SECURED
+2)PROTOCOLS
+3)TRANSACTION(EITHER EVERYTHING OR NOTHING)
+4)LOGGING
+5)MESSAGING
+6)Mailing
+
+Framework
+.net f/w
+J2EE f/w
+
+
+Application server (EJB CONTAINER + WEB SERVER)
+WebServer(Tomcat):subset of application server
+
+webserver vs AS(application server)
+1)  Webserver is a subset of application server
+JSP/SERVLET
+(ONLY COMMUNICATES WITH HTTP PROTOCOL)
+
+the webserver contains the jsp servlets
+the EJB contains the business logic
+
+
+in order to be a bean class
+it needs to be public

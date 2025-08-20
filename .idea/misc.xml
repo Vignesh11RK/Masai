@@ -7,10 +7,15 @@
         <option value="$PROJECT_DIR$/Day4_Assigment_Smart_Banking/pom.xml" />
         <option value="$PROJECT_DIR$/Day4/Assignment4_Smart_Bank/pom.xml" />
         <option value="$PROJECT_DIR$/Day6/Theory/pom.xml" />
+        <option value="$PROJECT_DIR$/Day14/MavenDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/HDFC_Mini_Bank_JDBC/pom.xml" />
+        <option value="$PROJECT_DIR$/Day14/HDFC_Maven_Assignment/pom.xml" />
+        <option value="$PROJECT_DIR$/WordFrequencyAnalyzer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Day14/HDFC_Maven_Assignment/pom.xml" />
         <option value="$PROJECT_DIR$/Day4_Assigment_Smart_Banking/pom.xml" />
       </set>
     </option>

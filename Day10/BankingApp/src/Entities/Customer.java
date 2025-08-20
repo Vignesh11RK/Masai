@@ -5,11 +5,11 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Customer {
-    private String customerID;
-    private String name;
-    private String phone ;
-    private String email;
-    private String password;
+    private String customerID = "^[a-zA-Z0-9]{6,12}$";
+    private String name= "^[a-zA-Z][a-zA-Z\\s'-]*[a-zA-Z]$|^[a-zA-Z]$"; ;
+    private String phone= "^\\d{10}$|^(?:\\d{3}-){2}\\d{4}$|^\\(\\d{3}\\)\\s\\d{3}-\\d{4}$" ;
+    private String email= "^[A-Za-z0-9+_.-]+@(.+)$";
+    private String password="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
     private LocalDate date ;
 
     public Customer(LocalDate date) {

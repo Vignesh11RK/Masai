@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -24,6 +26,8 @@ public class Main {
 
 
     private static final Scanner scanner = new Scanner(System.in);
+
+
 
     public static void main(String[] args) {
         System.out.println("Welcome to HDFC Bank App");
@@ -50,13 +54,14 @@ public class Main {
 
         System.out.println("5.VIEW TRANSACTION HISTORY");
         System.out.println("6.EXIT");
-     //   System.out.println("7. Demo Mode (Complete Flow)");
+//        System.out.println("7. Demo Mode (Complete Flow)");
 
         System.out.println("ENTER UR CHOICE");
 
         int choice = getInput();
         switch (choice) {
-            case 1:registerCustomer();
+            case 1:
+                registerCustomer();
                 break;
 
             case 2:
@@ -69,6 +74,10 @@ public class Main {
 
             case 4:
                 viewAccountDetails();
+                break;
+
+            case 5:
+                viewTransactionHistory();  // chechk
                 break;
             case 6:
                 System.out.println("Exiting... Thank you!");
@@ -87,6 +96,10 @@ public class Main {
 
 
     }
+
+//    private static void runDemoMode() {
+//    }
+
 
     private static int getInput() {
         while (true) {
@@ -117,9 +130,36 @@ public class Main {
 
         System.out.println("Enter phone : ");
         String phone = scanner.nextLine().trim();
+        String phoneRegex = "^(?:\\+91|91|0)?[6-9]\\d{9}$";
+        Pattern patternp=Pattern.compile(phoneRegex);
+        Matcher matcherp=patternp.matcher(phone);
+
+
+        if (matcherp.matches()){
+            System.out.println("Valid Phone no");
+        }else{
+            System.out.println("Invalid phone no");
+            return;
+        }
+
+
+
 
         System.out.println("Enter email : ");
         String email = scanner.nextLine().trim();
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+        Pattern pattern=Pattern.compile(emailRegex);
+        Matcher matcher=pattern.matcher(email);
+
+        if(matcher.matches()){
+            System.out.println("Valid email");
+        }else {
+            System.out.println("Invalid email");
+            return;
+        }
+
+
 
         System.out.println("Enter dob in yyyy-mm-dd");
         String dobStr = scanner.nextLine().trim();
@@ -138,7 +178,6 @@ public class Main {
         Customer customer = new Customer(customerId, name, email, phone, password, dateOfBirth);
         customers.put(customerId, customer);
         System.out.println("Customer registered successfully");
-
 
     }
 
@@ -248,13 +287,13 @@ public class Main {
             accounts.put(accountNo, account); // Save to map
             System.out.println("Congrats! Account created successfully.");
             System.out.println("Your Account Number is: " + account.getAccountNo());
+        }
 
-        } catch (NumberFormatException e) {
+        catch (NumberFormatException e) {
             System.out.println("Invalid balance amount!");
+
         }
     }
-
-
 
 
 
@@ -281,11 +320,10 @@ public class Main {
                 performWithdraw();
             default:
                 System.out.println("Invalid transaction type");
-
         }
     }
 
-    private static void performTransaction(){
+    private static void performTransaction() {
         System.out.println("\n=====Perform Transaction===");
         System.out.println("1. Deposit");
         System.out.println("2. Withdraw");
@@ -294,7 +332,7 @@ public class Main {
         System.out.println("Select Transaction type");
         int transactionChoice = getInput();
 
-        switch (transactionChoice){
+        switch (transactionChoice) {
             case 1:
                 performDeposit();
                 break;
@@ -339,42 +377,40 @@ public class Main {
         return "HDFC_TXN" + System.currentTimeMillis();
     }
 
-    private static void performWithdraw(){
+    private static void performWithdraw() {
         System.out.println("Enter the Account no");
-        String accountNo= scanner.nextLine().trim();
-        Account account =accounts.get(accountNo);
-        if(account ==null){
+        String accountNo = scanner.nextLine().trim();
+        Account account = accounts.get(accountNo);
+        if (account == null) {
             System.out.println("Account not registered");
             return;
         }
         System.out.println("Enter withdrawal amount");
-        String amountStr=scanner.nextLine().trim();  // sc should have been there
+        String amountStr = scanner.nextLine().trim();  // sc should have been there
         try {
             BigDecimal amount = new BigDecimal(amountStr);
             account.withdraw(amount);
             String transactionId = generateTransactionId();
 
-            Transaction transaction = new Transaction(accountNo,amount, LocalDateTime.now(),transactionId, TransactionType.WITHDRAW);
+            Transaction transaction = new Transaction(accountNo, amount, LocalDateTime.now(), transactionId, TransactionType.WITHDRAW);
             transactions.add(transaction);
-            System.out.println("Withdrawal Successfull"+ account.getBalance());
+            System.out.println("Withdrawal Successfull" + account.getBalance());
 
-        }catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             System.out.println("Invalid Amount");
-        }
-        catch (InsufficientBalance e){
-            System.out.println("Error "+e.getMessage());
+        } catch (InsufficientBalance e) {
+            System.out.println("Error " + e.getMessage());
         }
 
 
     }
 
 
-    private static void performTransfer(){
+    private static void performTransfer() {
         System.out.println("Enter Source account no: ");
         String fromAccountNo = sc.nextLine().trim();
         Account fromAccount = accounts.get(fromAccountNo);
-        if (fromAccount==null){
+        if (fromAccount == null) {
             System.out.println("Source Account not found");
             return;
         }
@@ -382,15 +418,15 @@ public class Main {
         System.out.println("Enter Destination account no: ");
         String toAccountNoStr = sc.nextLine().trim();
         Account toAccount = accounts.get(toAccountNoStr);
-        if (toAccount==null){
+        if (toAccount == null) {
             System.out.println("Destination Account not found");
             return;
         }
 
 
-        if (fromAccountNo.equals(toAccountNoStr))
-        {
+        if (fromAccountNo.equals(toAccountNoStr)) {
             System.out.println("cant transfer to same account");
+            return;
         }
 
         System.out.println("Enter amount");
@@ -399,40 +435,45 @@ public class Main {
 
         try {
             BigDecimal amount = new BigDecimal(amountStr);
+            // Withdraw and deposit
             fromAccount.withdraw(amount);
             toAccount.deposit(amount);
+
+
+            // Creation of  transaction object
             String transactionId = generateTransactionId();
-            Transaction transaction = new Transaction(fromAccountNo,amount, LocalDateTime.now(),transactionId, TransactionType.WITHDRAW,toAccountNoStr);
-        }catch (NumberFormatException e)
-        {
-            System.out.println("invalid Amount entered");
-        }catch (InsufficientBalance e)
-        {
-            System.out.println("Error "+e.getMessage());
+            Transaction transaction = new Transaction(fromAccountNo, amount, LocalDateTime.now(), transactionId, TransactionType.TRANSFER, toAccountNoStr);
+
+            transactions.add(transaction);   //Add transaction to global list
+            System.out.println("Transfer successful!");
+
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid Amount entered");
+        } catch (InsufficientBalance e) {
+            System.out.println("Error " + e.getMessage());
         }
     }
 
 
-
-    private static void viewAccountDetails(){
+    private static void viewAccountDetails() {
         System.out.println("\n===Account Details===");
         System.out.println("enter account number");
 
         String accountNoStr = sc.nextLine().trim();
         Account account = accounts.get(accountNoStr);
 
-        if (account==null){
+        if (account == null) {
             System.out.println("Account not found");
             return;
         }
 
         System.out.println(account.toString());
 
-        if(account instanceof SavingsAccount)
-        {
+        if (account instanceof SavingsAccount) {
             System.out.println("Account Type: Savings Account");
-        }
-        else {
+        } else {
             System.out.println("Account Type: Currents Accont");
         }
 
@@ -453,7 +494,7 @@ public class Main {
         }
 // putting the transactions in the stream
         List<Transaction> accountTransactions = transactions.stream()
-                .filter(t -> t.getAccountNo().equals(accountNo))
+                .filter(t -> t.getAccountNo().equals(accountNo) || (t.getToAccountNo() !=null && t.getToAccountNo().equals(accountNo)))
                 .sorted(Comparator.comparing(Transaction::getTimestamp).reversed())
                 .toList();
 
@@ -464,6 +505,7 @@ public class Main {
 
         System.out.println("\n--- Transaction List ---");
         for (Transaction transaction : accountTransactions) {
+
             System.out.println(transaction); // Ensure Transaction has a meaningful toString()
         }
 
@@ -494,7 +536,7 @@ public class Main {
 //        accounts.put(current.getAccountNo(), current);
 //        System.out.println("✓ Accounts created successfully");
 //
-//      //   Step 3: Perform transactions
+//        //   Step 3: Perform transactions
 //        savings.deposit(new BigDecimal("1000"));
 //        transactions.add(new Transaction(savings.getAccountNo(), TransactionType.DEPOSIT, new BigDecimal("1000")));
 //        System.out.println("✓ Deposit successful");
@@ -530,10 +572,16 @@ public class Main {
 //                    + ", Interest Rate: " + acc.getInterestRate() + "%");
 //        }
 //
+//
 //        System.out.println("\n=== Demo completed successfully! ===");
 //        System.out.println("All Java concepts demonstrated: OOP, Inheritance, Polymorphism,");
 //        System.out.println("Collections, Streams, Lambdas, Exception Handling.");
-    }
+//    }
+
+}
+
+
+
 
 
 

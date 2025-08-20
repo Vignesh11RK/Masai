@@ -94,7 +94,8 @@ public abstract class Account {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Account account)) return false;
+        if (!(o instanceof Account account))
+            return false;
         return Objects.equals(accountNo, account.accountNo) && Objects.equals(customerId, account.customerId) && type == account.type && Objects.equals(balance, account.balance);
     }
 
@@ -126,12 +127,6 @@ public abstract class Account {
         return balance.multiply(getInterestRate()).divide(new BigDecimal(100));
     }
 
-
-//    private static void performTransfer(){
-//        System.out.println("Enter source account no : ");
-//        String fromAccountNO=scanner.nextLine().trim();
-//
-//    }
 
     public void transfer(Account toAccount, BigDecimal amount) {
         this.withdraw(amount);
