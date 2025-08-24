@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MavenDemo" />
+        <module name="WordFrequencyAnalyzer" />
         <module name="Assignment4_Smart_Bank" />
+        <module name="HDFC_Mini_Bank_JDBC" />
         <module name="Theory" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Day4_Assigment_Smart_Banking" target="24" />
+      <module name="HDFC_Maven_Assignment" target="24" />
     </bytecodeTargetLevel>
   </component>
 </project>

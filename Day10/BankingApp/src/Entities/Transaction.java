@@ -15,18 +15,6 @@ public class Transaction {
     private TransactionType type;
     private String toAccountNo;
 
-//    public Transaction(String accountNo, BigDecimal amount, LocalDateTime now, String transactionsId, TransactionType transactionType) {
-//    }
-//
-//    public Transaction(String toAccountNo) {
-//        this.toAccountNo = toAccountNo;
-//    }
-//
-//    public Transaction(String fromAccountNo, BigDecimal amount, LocalDateTime now, String transactionId, TransactionType transactionType, String toAccountNoStr) {
-//    }
-//
-//    public Transaction(String accountNo, TransactionType transactionType, BigDecimal bigDecimal) {
-//    }
 
     public void Transaction(){
     }
@@ -129,7 +117,7 @@ public class Transaction {
     //hasdcode generation directly by ide
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Transaction that)) return false;
+        if (!(o instanceof Transaction that)) return false;  // find about that keyword
         return Objects.equals(TransactionId, that.TransactionId) && Objects.equals(amount, that.amount) && Objects.equals(accountNo, that.accountNo) && Objects.equals(timestamp, that.timestamp) && type == that.type;
     }
 
