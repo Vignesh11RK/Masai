@@ -1,0 +1,21 @@
+.java --> compile --> .class file -> zip together -->Jar File
+
+class multithreading{
+
+}
+
+client, server
+backend applicable  -- baniking app(client) -->mysql(server)
+
+JDBC becomes the client :
+
+Steps of using JDBC Client:
+1)Integrate all the jar file to your class path
+2)Connection establish
+3)Sql query subit
+4)Execution done by the sql server
+5)Response from server.
+6)Process the data received
+7)Deal with the exception
+8)
+10)

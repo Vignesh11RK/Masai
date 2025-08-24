@@ -1,0 +1,3 @@
+Learning Java is fun. Java is powerful, and Java is everywhere!
+Some people love Java, while others prefer Python. But Java has been around for decades.
+JAVA is not just a language — it's a whole ecosystem.
