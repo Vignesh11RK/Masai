@@ -8,10 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="MavenDemo" />
         <module name="WordFrequencyAnalyzer" />
-        <module name="Assignment4_Smart_Bank" />
         <module name="Theory_Spring_Core" />
-        <module name="HDFC_Mini_Bank_JDBC" />
         <module name="Theory" />
+        <module name="LibraryManagementSystem" />
+        <module name="Assignment4_Smart_Bank" />
+        <module name="HDFC_Mini_Bank_JDBC" />
       </profile>
       <profile name="Annotation profile for demo" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -24,9 +25,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Assignment_Spring_Core" target="24" />
       <module name="Day4_Assigment_Smart_Banking" target="24" />
       <module name="HDFC_Maven_Assignment" target="24" />
       <module name="Lesson" target="24" />
+      <module name="lib" target="24" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
