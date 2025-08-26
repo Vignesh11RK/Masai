@@ -11,11 +11,15 @@
         <option value="$PROJECT_DIR$/HDFC_Mini_Bank_JDBC/pom.xml" />
         <option value="$PROJECT_DIR$/Day14/HDFC_Maven_Assignment/pom.xml" />
         <option value="$PROJECT_DIR$/WordFrequencyAnalyzer/pom.xml" />
+        <option value="$PROJECT_DIR$/Day15_Spring_core/Theory_Spring_Core/pom.xml" />
+        <option value="$PROJECT_DIR$/Day16_SpringBoot/Lesson/pom.xml" />
+        <option value="$PROJECT_DIR$/Day16_SpringBoot/demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Day14/HDFC_Maven_Assignment/pom.xml" />
+        <option value="$PROJECT_DIR$/Day16_SpringBoot/Lesson/pom.xml" />
         <option value="$PROJECT_DIR$/Day4_Assigment_Smart_Banking/pom.xml" />
       </set>
     </option>

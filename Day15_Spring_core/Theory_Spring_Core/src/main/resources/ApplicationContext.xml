@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+
+
+    <!--       //<bean id="mb" class="MyBusinessClass"/>-->
+
+    <bean id="c" class="org.example.Car"/>
+    <bean id="b" class="org.example.Bike"/>
+    <!--       <bean id="t" class="org.example.Travel">-->
+    <!--              <property name="v" ref="c"/>-->
+    <!--              <property name="numberofP" value="4"/>-->
+    <!--       </bean>-->
+
+    <bean id="tc" class="org.example.Travel">
+        <constructor-arg value="2"/>
+        <constructor-arg ref="c"/>
+    </bean>
+
+    <bean id="dao" class="org.example.DaoBean" autowire="byName"/>
+    <bean id="service" class="org.example.ServiceLayer" autowire="byName"/>
+    <bean id="present" class="org.example.PresentationLayer" autowire="byName"/>
+
+</beans>

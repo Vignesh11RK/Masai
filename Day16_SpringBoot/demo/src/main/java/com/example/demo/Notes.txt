@@ -1,0 +1,38 @@
+
+
+
+Indigo ---> WebApp(HTML):eND user
+
+Shyscanner -->Web Service (Raw Dat)
+
+-Http protocol:Communications guid-lines btwn client and server
+
+Postman client
+Browser
+React app client
+Microservices
+
+Request:
+Get (students link -> click)
+Post (form)
+
+200- success 0K
+401 - Unauthorised
+500 - Server - error
+404 - Not Found
+
+
+Get Request
+POST, PUT, DELETE, PATCH
+
+
+1. Path variable
+2. Query Parameter
+3. Request body
+
+Web Services (Rata data )
+-Resftful WS
+-SOAP Based WS (data on xml)
+
+<flight>Indigo 6E 6767</flight>
+

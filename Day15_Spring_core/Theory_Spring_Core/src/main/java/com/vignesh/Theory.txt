@@ -1,0 +1,50 @@
+Spring modules:
+- Spring Core Module(IOC Container): Base module for the rest
+- AOP(Aspect Oriented Programming): Middle ware services
+- MVC Module: Used for Presentation Layer (Spring MVC)
+- Test Module: Test module
+
+Spring Core Module:
+- Dependency
+- IOC(Inversion of Control)
+- DI(Dependency Injection)
+
+
+for java bean to exist
+serliazation needed
+spring bean
+getter setter required
+no arg construtor
+
+-Java Bean
+-Spring Bean
+
+1)DI
+2)Bean Lifecycle management
+-Bean Factory(I)
+
+
+-ApplicationContext (I)
+
+- Types of DI:
+1. Setter Injection
+2. Constructor
+
+1. Setter: method
+2. Constructor
+
+Difference:
+
+- Autowiring
+ - Wiring: creating
+association between 2 components
+
+- Explicit
+
+- Auto-wiring
+- byName
+-bylype
+- Constructor
+- objects
+- ambiguity might occur
+- Constructor

@@ -91,10 +91,7 @@ public class Main {
             default:
                 System.out.println("Invalid choice! Please select a valid option.");
                 break;
-
         }
-
-
     }
 
 //    private static void runDemoMode() {
@@ -241,7 +238,8 @@ public class Main {
 //        }
 //
 //    }
-//
+
+
 
 
     private static void createAccount() {
@@ -295,9 +293,6 @@ public class Main {
         }
     }
 
-
-
-
     private static String generateAccountNo() {
         return String.format("%10d", System.currentTimeMillis());
     }
@@ -314,12 +309,16 @@ public class Main {
         switch (transactionChoice) {
             case 1:
                 performDeposit();
+                break;
             case 2:
                 performWithdraw();
+                break;
             case 3:
                 performWithdraw();
+                break;
             default:
                 System.out.println("Invalid transaction type");
+                break;
         }
     }
 
