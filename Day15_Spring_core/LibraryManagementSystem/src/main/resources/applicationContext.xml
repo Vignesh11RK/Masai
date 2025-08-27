@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Book Beans using Constructor Injection -->
+    <bean id="book1" class="com.vignesh.Book">
+        <constructor-arg value="201"/>
+        <constructor-arg value="Clean Code"/>
+        <constructor-arg value="Robert C. Martin"/>
+    </bean>
+
+    <bean id="book2" class="com.vignesh.Book">
+        <constructor-arg value="202"/>
+        <constructor-arg value="The Pragmatic Programmer"/>
+        <constructor-arg value="Andrew Hunt"/>
+    </bean>
+
+    <!-- Member Bean using Setter Injection -->
+    <bean id="member" class="com.vignesh.Member">
+        <property name="memberId" value="M2025"/>
+        <property name="name" value="Alice Johnson"/>
+    </bean>
+
+    <!-- Library Bean -->
+    <bean id="library" class="com.vignesh.Library">
+        <property name="name" value="Techie's Reading Hub"/>
+        <property name="member" ref="member"/>
+        <property name="books">
+            <list>
+                <ref bean="book1"/>
+                <ref bean="book2"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
