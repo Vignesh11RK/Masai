@@ -14,18 +14,20 @@
         <module name="Assignment4_Smart_Bank" />
         <module name="HDFC_Mini_Bank_JDBC" />
       </profile>
-      <profile name="Annotation profile for demo" enabled="true">
+      <profile name="Annotation profile for BookManagemnet" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
+        <module name="BookManagemnet" />
         <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Assignment_Spring_Core" target="24" />
+      <module name="Book_Management_System" target="24" />
       <module name="Day4_Assigment_Smart_Banking" target="24" />
       <module name="HDFC_Maven_Assignment" target="24" />
       <module name="Lesson" target="24" />
@@ -34,6 +36,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BookManagemnet" options="-parameters" />
       <module name="demo" options="-parameters" />
     </option>
   </component>
