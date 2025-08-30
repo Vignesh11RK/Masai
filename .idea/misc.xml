@@ -18,6 +18,11 @@
         <option value="$PROJECT_DIR$/Day15_Spring_core/LibraryManagementSystem/pom.xml" />
         <option value="$PROJECT_DIR$/Day16_SpringBoot/Book_Management_System/pom.xml" />
         <option value="$PROJECT_DIR$/Day16_SpringBoot/Book_Management_System/BookManagemnet/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/untitled/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/demosec/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_core_1/Revision1/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/Spring_sec/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_sec/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -25,11 +30,14 @@
         <option value="$PROJECT_DIR$/Day14/HDFC_Maven_Assignment/pom.xml" />
         <option value="$PROJECT_DIR$/Day15_Spring_core/Assignment_Spring_Core/pom.xml" />
         <option value="$PROJECT_DIR$/Day16_SpringBoot/Lesson/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/Spring_sec/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/demosec/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/untitled/pom.xml" />
         <option value="$PROJECT_DIR$/Day4_Assigment_Smart_Banking/pom.xml" />
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="24" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="openjdk-24" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
