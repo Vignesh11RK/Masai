@@ -12,6 +12,10 @@ public class Student {
     private Integer roll;
     private String name;
     private Integer marks;
+//
+//    public int getRoll() {
+//        return 144;
+//    }
 
 
 //  we can use lombok no args instead of writing all this

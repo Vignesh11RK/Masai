@@ -1,14 +1,13 @@
-package com.example.Spring_Boot_A;
+package com.gradlevig.gradleProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-
-public class SpringBootAApplication {
+public class GradleProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAApplication.class, args);
+		SpringApplication.run(GradleProjectApplication.class, args);
 	}
 
 }

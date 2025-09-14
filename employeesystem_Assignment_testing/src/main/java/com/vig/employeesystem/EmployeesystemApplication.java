@@ -1,14 +1,13 @@
-package com.example.Spring_Boot_A;
+package com.vig.employeesystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-
-public class SpringBootAApplication {
+public class EmployeesystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAApplication.class, args);
+		SpringApplication.run(EmployeesystemApplication.class, args);
 	}
 
 }

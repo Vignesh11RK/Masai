@@ -29,6 +29,9 @@
     <file url="file://$PROJECT_DIR$/Day6/Theory/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/HDFC_Mini_Bank_JDBC/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/HDFC_Mini_Bank_JDBC/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Logging/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Logging/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sec/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Boot_A/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Boot_Revision/Spring_B/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_core_1/Revision1/src/main/java" charset="UTF-8" />
@@ -39,5 +42,7 @@
     <file url="file://$PROJECT_DIR$/Spring_core_1/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/WordFrequencyAnalyzer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/WordFrequencyAnalyzer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/employeesystem_Assignment_testing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secureauth/src/main/java" charset="UTF-8" />
   </component>
 </project>
