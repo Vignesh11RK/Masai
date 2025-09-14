@@ -2,26 +2,41 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MavenDemo" />
         <module name="WordFrequencyAnalyzer" />
+        <module name="Logging" />
         <module name="Theory_Spring_Core" />
         <module name="Revision1" />
+        <module name="Revision2" />
         <module name="Theory" />
         <module name="LibraryManagementSystem" />
         <module name="Assignment4_Smart_Bank" />
         <module name="HDFC_Mini_Bank_JDBC" />
+        <module name="employeesystem" />
         <module name="Spring_sec" />
+      </profile>
+      <profile name="Annotation profile for Spring_B" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="Spring_Boot_A" />
+        <module name="Spring_B" />
       </profile>
       <profile name="Annotation profile for demo" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
         </processorPath>
         <module name="demo" />
         <module name="BookManagemnet" />
@@ -35,14 +50,22 @@
       <module name="HDFC_Maven_Assignment" target="24" />
       <module name="Lesson" target="24" />
       <module name="lib" target="24" />
+      <module name="Sec" target="21" />
+      <module name="secureauth" target="21" />
+      <module name="Spring_core_1" target="24" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BookManagemnet" options="-parameters" />
+      <module name="Sec" options="-parameters" />
+      <module name="Spring_B" options="-parameters" />
+      <module name="Spring_Boot_A" options="-parameters" />
       <module name="Spring_sec" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="demosec" options="-parameters" />
+      <module name="employeesystem" options="-parameters" />
+      <module name="secureauth" options="-parameters" />
     </option>
   </component>
 </project>

@@ -21,8 +21,17 @@
         <option value="$PROJECT_DIR$/Day17_Spring_Security/untitled/pom.xml" />
         <option value="$PROJECT_DIR$/Day17_Spring_Security/demosec/pom.xml" />
         <option value="$PROJECT_DIR$/Spring_core_1/Revision1/pom.xml" />
-        <option value="$PROJECT_DIR$/Day17_Spring_Security/Spring_sec/pom.xml" />
         <option value="$PROJECT_DIR$/Spring_sec/pom.xml" />
+        <option value="$PROJECT_DIR$/Day17_Spring_Security/Spring_sec/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_core_1/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_core_1/Revision2/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_Boot_Revision/Spring_B/pom.xml" />
+        <option value="$PROJECT_DIR$/Logging/pom.xml" />
+        <option value="$PROJECT_DIR$/CapStone_1/secureauth/pom.xml" />
+        <option value="$PROJECT_DIR$/secureauth/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_Boot_A/pom.xml" />
+        <option value="$PROJECT_DIR$/Sec/pom.xml" />
+        <option value="$PROJECT_DIR$/employeesystem_Assignment_testing/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -30,10 +39,11 @@
         <option value="$PROJECT_DIR$/Day14/HDFC_Maven_Assignment/pom.xml" />
         <option value="$PROJECT_DIR$/Day15_Spring_core/Assignment_Spring_Core/pom.xml" />
         <option value="$PROJECT_DIR$/Day16_SpringBoot/Lesson/pom.xml" />
-        <option value="$PROJECT_DIR$/Day17_Spring_Security/Spring_sec/pom.xml" />
         <option value="$PROJECT_DIR$/Day17_Spring_Security/demosec/pom.xml" />
         <option value="$PROJECT_DIR$/Day17_Spring_Security/untitled/pom.xml" />
         <option value="$PROJECT_DIR$/Day4_Assigment_Smart_Banking/pom.xml" />
+        <option value="$PROJECT_DIR$/Sec/pom.xml" />
+        <option value="$PROJECT_DIR$/secureauth/pom.xml" />
       </set>
     </option>
   </component>
