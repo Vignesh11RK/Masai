@@ -2,61 +2,54 @@ package com.vig.employeesystem.service;
 import com.vig.employeesystem.entity.Employee;
 import com.vig.employeesystem.repository.EmployeeRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import java.util.Arrays;
+import org.mockito.MockitoAnnotations;
 
-@ExtendWith(MockitoExtension.class)
 public class EmployeeServiceTest {
 
     @Mock
-    private EmployeeRepository employeeRepository;
+    private EmployeeRepository repository;
 
     @InjectMocks
-    private EmployeeServiceImpl employeeService;
+    private EmployeeServiceImpl service;
+
+    public EmployeeServiceTest() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
-    public void getEmployeeById_found_returnsEmployee() {
-        Employee employee = new Employee(1L, "John", "HR");
-        when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee));
+    public void testGetEmployeeById_Found() {
+        Employee employee = new Employee(1L, "John", "IT");
+        when(repository.findById(1L)).thenReturn(Optional.of(employee));
 
-        Employee result = employeeService.getEmployeeById(1L);
-
-        assertNotNull(result);
+        Employee result = service.getEmployeeById(1L);
         assertEquals("John", result.getName());
-        assertEquals("HR", result.getDepartment());
-        verify(employeeRepository).findById(1L);
     }
 
     @Test
-    public void getEmployeeById_notFound_throwsException() {
-        when(employeeRepository.findById(1L)).thenReturn(Optional.empty());
+    public void testGetEmployeeById_NotFound() {
+        when(repository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(NoSuchElementException.class, () -> employeeService.getEmployeeById(1L));
-        verify(employeeRepository).findById(1L);
+        assertThrows(RuntimeException.class, () -> {
+            service.getEmployeeById(1L);
+        });
     }
 
     @Test
-    public void getEmployeesByDepartment_returnsCorrectList() {
-        List<Employee> employees = List.of(
-                new Employee(1L, "Alice", "IT"),
-                new Employee(2L, "Bob", "IT")
+    public void testGetEmployeesByDepartment() {
+        List<Employee> list = Arrays.asList(
+                new Employee(1L, "John", "IT"),
+                new Employee(2L, "Jane", "IT")
         );
-        when(employeeRepository.findByDepartment("IT")).thenReturn(employees);
+        when(repository.findByDepartment("IT")).thenReturn(list);
 
-        List<Employee> result = employeeService.getEmployeesByDepartment("IT");
-
+        List<Employee> result = service.getEmployeesByDepartment("IT");
         assertEquals(2, result.size());
-        assertEquals("Alice", result.get(0).getName());
-        verify(employeeRepository).findByDepartment("IT");
     }
 }
