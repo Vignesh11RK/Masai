@@ -1,0 +1,32 @@
+User(user_id PK, name, email UNIQUE, password_hash, created_at)
+
+Movie(movie_id PK, title, language, genre, duration)
+
+Theater(theater_id PK, name, city)
+
+Show(show_id PK, movie_id FK, theater_id FK, show_time, screen_no)
+
+Seat(seat_id PK, show_id FK, seat_number, status)
+
+Booking(booking_id PK, user_id FK, show_id FK, seat_id FK, status, booking_time)
+
+
+| Method | Endpoint                           | Description              |
+| ------ | ---------------------------------- | ------------------------ |
+| POST   | `/users/register`                  | Create a user            |
+| POST   | `/users/login`                     | Login/authenticate user  |
+| GET    | `/movies?city=XYZ`                 | List movies in city      |
+| GET    | `/shows?movieId=123&theaterId=456` | Showtimes for a movie    |
+| GET    | `/shows/{id}/seats`                | Available seats for show |
+| POST   | `/bookings`                        | Book selected seats      |
+
+
+
+User → App → POST /bookings
+          → Booking Service
+              → Fetch seat with FOR UPDATE
+              → Mark seat as BOOKED
+              → Save Booking
+              → (Mock) Payment
+              → Return Confirmation
+
