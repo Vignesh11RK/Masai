@@ -18,6 +18,7 @@
         <module name="Banking_API_Resilience" />
         <module name="employeesystem" />
         <module name="WordFrequencyAnalyzer" />
+        <module name="HDFC_Java_Assignment_Unit-Testing_final" />
         <module name="employeesystem (1)" />
         <module name="Assignment4_Smart_Bank" />
         <module name="HDFC_Mini_Bank_JDBC" />
@@ -72,6 +73,7 @@
       <module name="BookMyshowClone" options="-parameters" />
       <module name="BookMyshowClone.main" options="-parameters" />
       <module name="BookMyshowClone.test" options="-parameters" />
+      <module name="HDFC_Java_Assignment_Unit-Testing_final" options="-parameters" />
       <module name="Sec" options="-parameters" />
       <module name="SpringSecurityFinal" options="-parameters" />
       <module name="Spring_B" options="-parameters" />
