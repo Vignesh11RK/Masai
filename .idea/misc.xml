@@ -33,6 +33,8 @@
         <option value="$PROJECT_DIR$/Sec/pom.xml" />
         <option value="$PROJECT_DIR$/employeesystem_Assignment_testing/pom.xml" />
         <option value="$PROJECT_DIR$/employeesystem_unit_testing/pom.xml" />
+        <option value="$PROJECT_DIR$/Banking_API_Resilience/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringSecurityFinal/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
