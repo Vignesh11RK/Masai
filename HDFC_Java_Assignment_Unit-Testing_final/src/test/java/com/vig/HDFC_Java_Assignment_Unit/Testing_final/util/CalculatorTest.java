@@ -1,4 +1,6 @@
-package com.vig.HDFC_Java_Assignment_Unit.Testing.util;
+package com.vig.HDFC_Java_Assignment_Unit.Testing_final.util;
+
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
-    private Calculator calculator;
+    Calculator calculator;
 
     @BeforeEach
     void setUp() {
@@ -22,9 +24,10 @@ class CalculatorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "2, 3, 5",
-            "10, 20, 30",
-            "7, 8, 15"
+            "2,3,5",
+            "10,20,30",
+            "7,8,15",
+            "-1,-2,-3"
     })
     void testAddParameterized(int a, int b, int expected) {
         assertEquals(expected, calculator.add(a, b));
@@ -33,11 +36,13 @@ class CalculatorTest {
     @Test
     void testSubtract() {
         assertEquals(1, calculator.subtract(4, 3));
+        assertEquals(7, calculator.subtract(4, -3));
     }
 
     @Test
     void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3));
+        assertEquals(-6, calculator.multiply(-2, 3));
     }
 
     @Test
@@ -46,8 +51,8 @@ class CalculatorTest {
     }
 
     @Test
-    void testDivideByZeroThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> calculator.divide(4, 0));
+    void testDivideByZero() {
+        assertThrows(IllegalArgumentException.class, () -> calculator.divide(5, 0));
     }
 
     @AfterEach

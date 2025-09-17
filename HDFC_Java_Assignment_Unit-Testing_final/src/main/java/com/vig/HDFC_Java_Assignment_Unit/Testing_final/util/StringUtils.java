@@ -1,13 +1,11 @@
-package com.vig.HDFC_Java_Assignment_Unit.Testing.util;
-
-
+package com.vig.HDFC_Java_Assignment_Unit.Testing_final.util;
 
 public class StringUtils {
 
     public boolean isPalindrome(String input) {
         if (input == null) return false;
         String reversed = new StringBuilder(input).reverse().toString();
-        return input.equals(reversed);
+        return input.equalsIgnoreCase(reversed);
     }
 
     public String reverse(String input) {

@@ -1,4 +1,5 @@
-package com.vig.HDFC_Java_Assignment_Unit.Testing.util;
+package com.vig.HDFC_Java_Assignment_Unit.Testing_final.util;
+
 
 public class Calculator {
 
@@ -16,7 +17,7 @@ public class Calculator {
 
     public int divide(int a, int b) {
         if (b == 0) {
-            throw new IllegalArgumentException("Cannot divide by zero");
+            throw new IllegalArgumentException("Cannot divide by zero.");
         }
         return a / b;
     }
