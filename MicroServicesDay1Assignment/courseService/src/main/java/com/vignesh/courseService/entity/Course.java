@@ -1,9 +1,16 @@
-package com.vignesh.courseService.dto;
+package com.vignesh.courseService.entity;
 
 
-public class CourseDTO {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "courses")
+public class Course {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String courseName;
+
     private String duration;
 
     // getters & setters
@@ -14,3 +21,4 @@ public class CourseDTO {
     public String getDuration() { return duration; }
     public void setDuration(String duration) { this.duration = duration; }
 }
+

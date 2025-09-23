@@ -1,6 +1,10 @@
-package com.vignesh.studentService.dto;
+package com.vignesh.studentService.entity;
+import jakarta.persistence.*;
 
-public class StudentDTO {
+@Entity
+@Table(name = "students")
+public class Student {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer age;
