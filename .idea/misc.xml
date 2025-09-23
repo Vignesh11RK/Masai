@@ -36,6 +36,18 @@
         <option value="$PROJECT_DIR$/Banking_API_Resilience/pom.xml" />
         <option value="$PROJECT_DIR$/SpringSecurityFinal/pom.xml" />
         <option value="$PROJECT_DIR$/HDFC_Java_Assignment_Unit-Testing_final/pom.xml" />
+        <option value="$PROJECT_DIR$/RoomBook/pom.xml" />
+        <option value="$PROJECT_DIR$/RoomBooking /pom.xml" />
+        <option value="$PROJECT_DIR$/courseService/pom.xml" />
+        <option value="$PROJECT_DIR$/studentService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServices/courseService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServices/enrollmentService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServices/studentService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServiceDay2/productService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServiceDay2/orderService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServicesDay1Assignment/studentService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServicesDay1Assignment/courseService/pom.xml" />
+        <option value="$PROJECT_DIR$/MicroServicesDay1Assignment/enrollmentService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -46,6 +58,7 @@
         <option value="$PROJECT_DIR$/Day17_Spring_Security/demosec/pom.xml" />
         <option value="$PROJECT_DIR$/Day17_Spring_Security/untitled/pom.xml" />
         <option value="$PROJECT_DIR$/Day4_Assigment_Smart_Banking/pom.xml" />
+        <option value="$PROJECT_DIR$/RoomBook/pom.xml" />
         <option value="$PROJECT_DIR$/Sec/pom.xml" />
         <option value="$PROJECT_DIR$/secureauth/pom.xml" />
       </set>
