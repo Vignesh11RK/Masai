@@ -24,15 +24,36 @@
         <module name="HDFC_Mini_Bank_JDBC" />
         <module name="Spring_sec" />
       </profile>
-      <profile name="Annotation profile for demo" enabled="true">
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.38/57f8f5e02e92a30fd21b80cbd426a4172b5f8e29/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="BookMyshowClone.main" />
+      </profile>
+      <profile name="Annotation profile for RoomBooking" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
+        </processorPath>
+        <module name="RoomBooking" />
+      </profile>
+      <profile name="Annotation profile for studentService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
         </processorPath>
+        <module name="enrollmentService" />
         <module name="demo" />
         <module name="BookManagemnet" />
+        <module name="studentService" />
+        <module name="courseService" />
+        <module name="productService" />
       </profile>
       <profile name="Annotation profile for Spring_B" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -44,13 +65,6 @@
         </processorPath>
         <module name="Spring_Boot_A" />
         <module name="Spring_B" />
-      </profile>
-      <profile name="Gradle Imported" enabled="true">
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.38/57f8f5e02e92a30fd21b80cbd426a4172b5f8e29/lombok-1.18.38.jar" />
-        </processorPath>
-        <module name="BookMyshowClone.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -74,16 +88,22 @@
       <module name="BookMyshowClone.main" options="-parameters" />
       <module name="BookMyshowClone.test" options="-parameters" />
       <module name="HDFC_Java_Assignment_Unit-Testing_final" options="-parameters" />
+      <module name="RoomBooking" options="-parameters" />
       <module name="Sec" options="-parameters" />
       <module name="SpringSecurityFinal" options="-parameters" />
       <module name="Spring_B" options="-parameters" />
       <module name="Spring_Boot_A" options="-parameters" />
       <module name="Spring_sec" options="-parameters" />
+      <module name="courseService" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="demosec" options="-parameters" />
       <module name="employeesystem" options="-parameters" />
       <module name="employeesystem (1)" options="-parameters" />
+      <module name="enrollmentService" options="-parameters" />
+      <module name="orderService" options="-parameters" />
+      <module name="productService" options="-parameters" />
       <module name="secureauth" options="-parameters" />
+      <module name="studentService" options="-parameters" />
     </option>
   </component>
 </project>
