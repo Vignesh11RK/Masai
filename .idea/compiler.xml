@@ -48,11 +48,8 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
         </processorPath>
-        <module name="enrollmentService" />
         <module name="demo" />
         <module name="BookManagemnet" />
-        <module name="studentService" />
-        <module name="courseService" />
         <module name="productService" />
       </profile>
       <profile name="Annotation profile for Spring_B" enabled="true">
@@ -70,14 +67,17 @@
     <bytecodeTargetLevel>
       <module name="Assignment_Spring_Core" target="24" />
       <module name="Book_Management_System" target="24" />
+      <module name="courseService" target="21" />
       <module name="Day4_Assigment_Smart_Banking" target="24" />
       <module name="demosec" target="21" />
+      <module name="enrollmentService" target="21" />
       <module name="HDFC_Maven_Assignment" target="24" />
       <module name="Lesson" target="24" />
       <module name="lib" target="24" />
       <module name="Sec" target="21" />
       <module name="secureauth" target="21" />
       <module name="Spring_core_1" target="24" />
+      <module name="studentService" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
