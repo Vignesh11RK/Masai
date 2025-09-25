@@ -41,7 +41,7 @@
         </processorPath>
         <module name="RoomBooking" />
       </profile>
-      <profile name="Annotation profile for studentService" enabled="true">
+      <profile name="Annotation profile for productService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -51,6 +51,7 @@
         <module name="demo" />
         <module name="BookManagemnet" />
         <module name="productService" />
+        <module name="orderService" />
       </profile>
       <profile name="Annotation profile for Spring_B" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
