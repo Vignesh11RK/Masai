@@ -7,22 +7,45 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MavenDemo" />
-        <module name="Logging" />
         <module name="Theory_Spring_Core" />
         <module name="Revision1" />
         <module name="Revision2" />
+        <module name="Spring_Boot_A (1)" />
         <module name="Theory" />
-        <module name="SpringSecurityFinal" />
+        <module name="WordFrequencyAnalyzer (1)" />
         <module name="LibraryManagementSystem" />
-        <module name="Banking_API_Resilience" />
-        <module name="employeesystem" />
-        <module name="WordFrequencyAnalyzer" />
-        <module name="HDFC_Java_Assignment_Unit-Testing_final" />
+        <module name="BookManagemnet (1)" />
+        <module name="Spring_sec (1)" />
+        <module name="Spring_B (1)" />
+        <module name="Revision1 (1)" />
+        <module name="Banking_API_Resilience (1)" />
+        <module name="Theory_Spring_Core (1)" />
         <module name="employeesystem (1)" />
         <module name="Assignment4_Smart_Bank" />
         <module name="HDFC_Mini_Bank_JDBC" />
+        <module name="MavenDemo (1)" />
+        <module name="employeesystem (3)" />
+        <module name="LibraryManagementSystem (1)" />
+        <module name="MavenDemo" />
+        <module name="Logging" />
+        <module name="HDFC_Java_Assignment_Unit-Testing_final (1)" />
+        <module name="Logging (1)" />
+        <module name="orderService (1)" />
+        <module name="HDFC_Mini_Bank_JDBC (1)" />
+        <module name="RoomBooking (1)" />
+        <module name="SpringSecurityFinal" />
+        <module name="Banking_API_Resilience" />
+        <module name="employeesystem" />
+        <module name="Assignment4_Smart_Bank (1)" />
+        <module name="SpringSecurityFinal (1)" />
+        <module name="WordFrequencyAnalyzer" />
+        <module name="productService (1)" />
+        <module name="HDFC_Java_Assignment_Unit-Testing_final" />
+        <module name="Theory (1)" />
+        <module name="demo (1)" />
+        <module name="employeesystem (2)" />
         <module name="Spring_sec" />
+        <module name="Revision2 (1)" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -37,19 +60,10 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
-        </processorPath>
-        <module name="RoomBooking" />
-      </profile>
-      <profile name="Annotation profile for productService" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
         </processorPath>
         <module name="demo" />
         <module name="BookManagemnet" />
+        <module name="RoomBooking" />
         <module name="productService" />
         <module name="orderService" />
       </profile>
@@ -58,7 +72,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="Spring_Boot_A" />
