@@ -1,0 +1,18 @@
+{
+	"ulid": "01K87F3MX5SNA5P4SPPM7ARWCE",
+	"minTime": 1761167381722,
+	"maxTime": 1761170400000,
+	"stats": {
+		"numSamples": 107,
+		"numFloatSamples": 107,
+		"numSeries": 107,
+		"numChunks": 107
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01K87F3MX5SNA5P4SPPM7ARWCE"
+		]
+	},
+	"version": 1
+}
