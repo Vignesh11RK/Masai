@@ -10,42 +10,26 @@
         <module name="Theory_Spring_Core" />
         <module name="Revision1" />
         <module name="Revision2" />
-        <module name="Spring_Boot_A (1)" />
         <module name="Theory" />
-        <module name="WordFrequencyAnalyzer (1)" />
         <module name="LibraryManagementSystem" />
-        <module name="BookManagemnet (1)" />
-        <module name="Spring_sec (1)" />
-        <module name="Spring_B (1)" />
-        <module name="Revision1 (1)" />
-        <module name="Banking_API_Resilience (1)" />
-        <module name="Theory_Spring_Core (1)" />
+        <module name="demo" />
+        <module name="productService" />
+        <module name="Spring_B" />
+        <module name="orderService" />
         <module name="employeesystem (1)" />
         <module name="Assignment4_Smart_Bank" />
         <module name="HDFC_Mini_Bank_JDBC" />
-        <module name="MavenDemo (1)" />
-        <module name="employeesystem (3)" />
-        <module name="LibraryManagementSystem (1)" />
         <module name="MavenDemo" />
         <module name="Logging" />
-        <module name="HDFC_Java_Assignment_Unit-Testing_final (1)" />
-        <module name="Logging (1)" />
-        <module name="orderService (1)" />
-        <module name="HDFC_Mini_Bank_JDBC (1)" />
-        <module name="RoomBooking (1)" />
         <module name="SpringSecurityFinal" />
+        <module name="RoomBooking" />
         <module name="Banking_API_Resilience" />
         <module name="employeesystem" />
-        <module name="Assignment4_Smart_Bank (1)" />
-        <module name="SpringSecurityFinal (1)" />
+        <module name="Spring_Boot_A" />
         <module name="WordFrequencyAnalyzer" />
-        <module name="productService (1)" />
         <module name="HDFC_Java_Assignment_Unit-Testing_final" />
-        <module name="Theory (1)" />
-        <module name="demo (1)" />
-        <module name="employeesystem (2)" />
+        <module name="BookManagemnet" />
         <module name="Spring_sec" />
-        <module name="Revision2 (1)" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -54,68 +38,68 @@
         </processorPath>
         <module name="BookMyshowClone.main" />
       </profile>
-      <profile name="Annotation profile for RoomBooking" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
-        </processorPath>
-        <module name="demo" />
-        <module name="BookManagemnet" />
-        <module name="RoomBooking" />
-        <module name="productService" />
-        <module name="orderService" />
-      </profile>
-      <profile name="Annotation profile for Spring_B" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
-        <module name="Spring_Boot_A" />
-        <module name="Spring_B" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Assignment4_Smart_Bank (1)" target="24" />
       <module name="Assignment_Spring_Core" target="24" />
+      <module name="Banking_API_Resilience (1)" target="1.5" />
       <module name="Book_Management_System" target="24" />
+      <module name="BookManagemnet (1)" target="21" />
       <module name="courseService" target="21" />
       <module name="Day4_Assigment_Smart_Banking" target="24" />
+      <module name="demo (1)" target="21" />
       <module name="demosec" target="21" />
+      <module name="employeesystem (2)" target="21" />
+      <module name="employeesystem (3)" target="1.5" />
       <module name="enrollmentService" target="21" />
+      <module name="HDFC_Java_Assignment_Unit-Testing_final (1)" target="1.5" />
       <module name="HDFC_Maven_Assignment" target="24" />
+      <module name="HDFC_Mini_Bank_JDBC (1)" target="24" />
       <module name="Lesson" target="24" />
       <module name="lib" target="24" />
+      <module name="LibraryManagementSystem (1)" target="24" />
+      <module name="Logging (1)" target="24" />
+      <module name="MavenDemo (1)" target="24" />
+      <module name="orderService (1)" target="1.5" />
+      <module name="productService (1)" target="1.5" />
+      <module name="Revision1 (1)" target="24" />
+      <module name="Revision2 (1)" target="24" />
+      <module name="RoomBooking (1)" target="24" />
       <module name="Sec" target="21" />
       <module name="secureauth" target="21" />
+      <module name="Spring_B (1)" target="1.5" />
+      <module name="Spring_Boot_A (1)" target="1.5" />
       <module name="Spring_core_1" target="24" />
+      <module name="Spring_sec (1)" target="1.5" />
+      <module name="SpringSecurityFinal (1)" target="1.5" />
       <module name="studentService" target="21" />
+      <module name="Theory (1)" target="24" />
+      <module name="Theory_Spring_Core (1)" target="24" />
+      <module name="WordFrequencyAnalyzer (1)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Banking_API_Resilience" options="-parameters" />
-      <module name="BookManagemnet" options="-parameters" />
+      <module name="BookManagemnet" options="" />
       <module name="BookMyshowClone" options="-parameters" />
       <module name="BookMyshowClone.main" options="-parameters" />
       <module name="BookMyshowClone.test" options="-parameters" />
-      <module name="HDFC_Java_Assignment_Unit-Testing_final" options="-parameters" />
-      <module name="RoomBooking" options="-parameters" />
+      <module name="HDFC_Java_Assignment_Unit-Testing_final" options="" />
+      <module name="RoomBooking" options="" />
       <module name="Sec" options="-parameters" />
-      <module name="SpringSecurityFinal" options="-parameters" />
-      <module name="Spring_B" options="-parameters" />
-      <module name="Spring_Boot_A" options="-parameters" />
-      <module name="Spring_sec" options="-parameters" />
+      <module name="SpringSecurityFinal" options="" />
+      <module name="Spring_B" options="" />
+      <module name="Spring_Boot_A" options="" />
+      <module name="Spring_sec" options="" />
       <module name="courseService" options="-parameters" />
-      <module name="demo" options="-parameters" />
+      <module name="demo" options="" />
       <module name="demosec" options="-parameters" />
-      <module name="employeesystem" options="-parameters" />
-      <module name="employeesystem (1)" options="-parameters" />
+      <module name="employeesystem" options="" />
+      <module name="employeesystem (1)" options="" />
       <module name="enrollmentService" options="-parameters" />
-      <module name="orderService" options="-parameters" />
-      <module name="productService" options="-parameters" />
+      <module name="orderService" options="" />
+      <module name="productService" options="" />
       <module name="secureauth" options="-parameters" />
       <module name="studentService" options="-parameters" />
     </option>

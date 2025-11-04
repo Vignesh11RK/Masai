@@ -1,10 +1,10 @@
-package com.vig.CiCd;
+package com.vig.CICD;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CiCdApplicationTests {
+class CicdApplicationTests {
 
 	@Test
 	void contextLoads() {
