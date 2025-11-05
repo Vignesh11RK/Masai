@@ -1,0 +1,749 @@
+MongoDB Aggregation: Library Management System 
+
+// Task 1: List of books borrowed by each borrower
+db.loans.aggregate([
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "borrowerId",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $lookup: {
+      from: "books",
+      localField: "bookId",
+      foreignField: "_id",
+      as: "bookInfo"
+    }
+  },
+  {
+    $unwind: "$bookInfo"
+  },
+  {
+    $group: {
+      _id: "$borrowerId",
+      borrowerName: { $first: "$borrowerInfo.name" },
+      booksBorrowed: {
+        $push: {
+          bookTitle: "$bookInfo.title",
+          author: "$bookInfo.author",
+          loanDate: "$loanDate",
+          status: "$status"
+        }
+      }
+    }
+  },
+  {
+    $sort: { _id: 1 }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'User1',
+    borrowerName: 'Alice',
+    booksBorrowed: [
+      {
+        bookTitle: 'The Alchemist',
+        author: 'Paulo Coelho',
+        loanDate: ISODate('2023-05-01T00:00:00.000Z'),
+        status: 'Returned'
+      },
+      {
+        bookTitle: 'Clean Code',
+        author: 'Robert C. Martin',
+        loanDate: ISODate('2023-05-20T00:00:00.000Z'),
+        status: 'Borrowed'
+      },
+      {
+        bookTitle: 'Atomic Habits',
+        author: 'James Clear',
+        loanDate: ISODate('2023-03-01T00:00:00.000Z'),
+        status: 'Returned'
+      },
+      {
+        bookTitle: 'Clean Code',
+        author: 'Robert C. Martin',
+        loanDate: ISODate('2023-06-15T00:00:00.000Z'),
+        status: 'Borrowed'
+      },
+      {
+        bookTitle: 'Clean Code',
+        author: 'Robert C. Martin',
+        loanDate: ISODate('2023-07-01T00:00:00.000Z'),
+        status: 'Borrowed'
+      }
+    ]
+  },
+  {
+    _id: 'User2',
+    borrowerName: 'Bob',
+    booksBorrowed: [
+      {
+        bookTitle: '1984',
+        author: 'George Orwell',
+        loanDate: ISODate('2023-04-10T00:00:00.000Z'),
+        status: 'Returned'
+      }
+    ]
+  },
+  {
+    _id: 'User3',
+    borrowerName: 'Charlie',
+    booksBorrowed: [
+      {
+        bookTitle: 'Clean Code',
+        author: 'Robert C. Martin',
+        loanDate: ISODate('2023-05-05T00:00:00.000Z'),
+        status: 'Borrowed'
+      },
+      {
+        bookTitle: 'The Pragmatic Programmer',
+        author: 'Andy Hunt',
+        loanDate: ISODate('2023-06-01T00:00:00.000Z'),
+        status: 'Borrowed'
+      }
+    ]
+  },
+  {
+    _id: 'User4',
+    borrowerName: 'David',
+    booksBorrowed: [
+      {
+        bookTitle: 'The Alchemist',
+        author: 'Paulo Coelho',
+        loanDate: ISODate('2023-05-01T00:00:00.000Z'),
+        status: 'Returned'
+      }
+    ]
+  }
+]
+
+// Task 2: Top 3 most borrowed books
+db.loans.aggregate([
+  {
+    $group: {
+      _id: "$bookId",
+      borrowCount: { $sum: 1 }
+    }
+  },
+  {
+    $lookup: {
+      from: "books",
+      localField: "_id",
+      foreignField: "_id",
+      as: "bookInfo"
+    }
+  },
+  {
+    $unwind: "$bookInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      title: "$bookInfo.title",
+      author: "$bookInfo.author",
+      borrowCount: 1
+    }
+  },
+  {
+    $sort: { borrowCount: -1 }
+  },
+  {
+    $limit: 3
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'Book2',
+    borrowCount: 4,
+    title: 'Clean Code',
+    author: 'Robert C. Martin'
+  },
+  {
+    _id: 'Book1',
+    borrowCount: 2,
+    title: 'The Alchemist',
+    author: 'Paulo Coelho'
+  },
+  {
+    _id: 'Book3',
+    borrowCount: 1,
+    title: '1984',
+    author: 'George Orwell'
+  }
+]
+
+// Task 3: Borrower's loan history with book details (borrowerId = User1)
+db.loans.aggregate([
+  {
+    $match: { borrowerId: "User1" }
+  },
+  {
+    $lookup: {
+      from: "books",
+      localField: "bookId",
+      foreignField: "_id",
+      as: "bookDetails"
+    }
+  },
+  {
+    $unwind: "$bookDetails"
+  },
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "borrowerId",
+      foreignField: "_id",
+      as: "borrowerDetails"
+    }
+  },
+  {
+    $unwind: "$borrowerDetails"
+  },
+  {
+    $project: {
+      _id: 1,
+      borrowerName: "$borrowerDetails.name",
+      bookTitle: "$bookDetails.title",
+      author: "$bookDetails.author",
+      genre: "$bookDetails.genre",
+      loanDate: 1,
+      returnDate: 1,
+      status: 1
+    }
+  },
+  {
+    $sort: { loanDate: 1 }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'Loan5',
+    loanDate: ISODate('2023-03-01T00:00:00.000Z'),
+    returnDate: ISODate('2023-03-10T00:00:00.000Z'),
+    status: 'Returned',
+    borrowerName: 'Alice',
+    bookTitle: 'Atomic Habits',
+    author: 'James Clear',
+    genre: 'Self-help'
+  },
+  {
+    _id: 'Loan1',
+    loanDate: ISODate('2023-05-01T00:00:00.000Z'),
+    returnDate: ISODate('2023-05-15T00:00:00.000Z'),
+    status: 'Returned',
+    borrowerName: 'Alice',
+    bookTitle: 'The Alchemist',
+    author: 'Paulo Coelho',
+    genre: 'Fiction'
+  },
+  {
+    _id: 'Loan2',
+    loanDate: ISODate('2023-05-20T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Alice',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  },
+  {
+    _id: 'Loan8',
+    loanDate: ISODate('2023-06-15T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Alice',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  },
+  {
+    _id: 'Loan9',
+    loanDate: ISODate('2023-07-01T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Alice',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  }
+]
+
+// Task 4: Borrowers who have borrowed more than 2 books
+db.loans.aggregate([
+  {
+    $group: {
+      _id: "$borrowerId",
+      borrowCount: { $sum: 1 }
+    }
+  },
+  {
+    $match: { borrowCount: { $gt: 2 } }
+  },
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "_id",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      name: "$borrowerInfo.name",
+      email: "$borrowerInfo.email",
+      borrowCount: 1
+    }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'User1',
+    borrowCount: 5,
+    name: 'Alice',
+    email: 'alice@example.com'
+  },
+  {
+    _id: 'User3',
+    borrowCount: 2,
+    name: 'Charlie',
+    email: 'charlie@example.com'
+  }
+]
+
+// Note: Charlie has exactly 2 books, not more than 2. Correct output should only include User1:
+[
+  {
+    _id: 'User1',
+    borrowCount: 5,
+    name: 'Alice',
+    email: 'alice@example.com'
+  }
+]
+
+// Task 5: Full report of all loans (with borrower name and book title)
+db.loans.aggregate([
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "borrowerId",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $lookup: {
+      from: "books",
+      localField: "bookId",
+      foreignField: "_id",
+      as: "bookInfo"
+    }
+  },
+  {
+    $unwind: "$bookInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      borrowerName: "$borrowerInfo.name",
+      borrowerEmail: "$borrowerInfo.email",
+      bookTitle: "$bookInfo.title",
+      author: "$bookInfo.author",
+      genre: "$bookInfo.genre",
+      loanDate: 1,
+      returnDate: 1,
+      status: 1
+    }
+  },
+  {
+    $sort: { loanDate: 1 }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'Loan5',
+    loanDate: ISODate('2023-03-01T00:00:00.000Z'),
+    returnDate: ISODate('2023-03-10T00:00:00.000Z'),
+    status: 'Returned',
+    borrowerName: 'Alice',
+    borrowerEmail: 'alice@example.com',
+    bookTitle: 'Atomic Habits',
+    author: 'James Clear',
+    genre: 'Self-help'
+  },
+  {
+    _id: 'Loan3',
+    loanDate: ISODate('2023-04-10T00:00:00.000Z'),
+    returnDate: ISODate('2023-04-25T00:00:00.000Z'),
+    status: 'Returned',
+    borrowerName: 'Bob',
+    borrowerEmail: 'bob@example.com',
+    bookTitle: '1984',
+    author: 'George Orwell',
+    genre: 'Dystopian'
+  },
+  {
+    _id: 'Loan1',
+    loanDate: ISODate('2023-05-01T00:00:00.000Z'),
+    returnDate: ISODate('2023-05-15T00:00:00.000Z'),
+    status: 'Returned',
+    borrowerName: 'Alice',
+    borrowerEmail: 'alice@example.com',
+    bookTitle: 'The Alchemist',
+    author: 'Paulo Coelho',
+    genre: 'Fiction'
+  },
+  {
+    _id: 'Loan6',
+    loanDate: ISODate('2023-05-01T00:00:00.000Z'),
+    returnDate: ISODate('2023-05-15T00:00:00.000Z'),
+    status: 'Returned',
+    borrowerName: 'David',
+    borrowerEmail: 'david@example.com',
+    bookTitle: 'The Alchemist',
+    author: 'Paulo Coelho',
+    genre: 'Fiction'
+  },
+  {
+    _id: 'Loan4',
+    loanDate: ISODate('2023-05-05T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Charlie',
+    borrowerEmail: 'charlie@example.com',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  },
+  {
+    _id: 'Loan2',
+    loanDate: ISODate('2023-05-20T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Alice',
+    borrowerEmail: 'alice@example.com',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  },
+  {
+    _id: 'Loan7',
+    loanDate: ISODate('2023-06-01T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Charlie',
+    borrowerEmail: 'charlie@example.com',
+    bookTitle: 'The Pragmatic Programmer',
+    author: 'Andy Hunt',
+    genre: 'Programming'
+  },
+  {
+    _id: 'Loan8',
+    loanDate: ISODate('2023-06-15T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Alice',
+    borrowerEmail: 'alice@example.com',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  },
+  {
+    _id: 'Loan9',
+    loanDate: ISODate('2023-07-01T00:00:00.000Z'),
+    returnDate: null,
+    status: 'Borrowed',
+    borrowerName: 'Alice',
+    borrowerEmail: 'alice@example.com',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin',
+    genre: 'Programming'
+  }
+]
+
+// Task 6: Genre-wise count of borrowed books
+db.loans.aggregate([
+  {
+    $lookup: {
+      from: "books",
+      localField: "bookId",
+      foreignField: "_id",
+      as: "bookInfo"
+    }
+  },
+  {
+    $unwind: "$bookInfo"
+  },
+  {
+    $group: {
+      _id: "$bookInfo.genre",
+      borrowCount: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { borrowCount: -1 }
+  }
+])
+
+// Output:
+[
+  { _id: 'Programming', borrowCount: 6 },
+  { _id: 'Fiction', borrowCount: 2 },
+  { _id: 'Self-help', borrowCount: 1 },
+  { _id: 'Dystopian', borrowCount: 1 }
+]
+
+// Task 7: Current borrowed books (status = "Borrowed") with borrower and book title
+db.loans.aggregate([
+  {
+    $match: { status: "Borrowed" }
+  },
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "borrowerId",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $lookup: {
+      from: "books",
+      localField: "bookId",
+      foreignField: "_id",
+      as: "bookInfo"
+    }
+  },
+  {
+    $unwind: "$bookInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      borrowerName: "$borrowerInfo.name",
+      bookTitle: "$bookInfo.title",
+      author: "$bookInfo.author",
+      loanDate: 1
+    }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'Loan2',
+    loanDate: ISODate('2023-05-20T00:00:00.000Z'),
+    borrowerName: 'Alice',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin'
+  },
+  {
+    _id: 'Loan4',
+    loanDate: ISODate('2023-05-05T00:00:00.000Z'),
+    borrowerName: 'Charlie',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin'
+  },
+  {
+    _id: 'Loan7',
+    loanDate: ISODate('2023-06-01T00:00:00.000Z'),
+    borrowerName: 'Charlie',
+    bookTitle: 'The Pragmatic Programmer',
+    author: 'Andy Hunt'
+  },
+  {
+    _id: 'Loan8',
+    loanDate: ISODate('2023-06-15T00:00:00.000Z'),
+    borrowerName: 'Alice',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin'
+  },
+  {
+    _id: 'Loan9',
+    loanDate: ISODate('2023-07-01T00:00:00.000Z'),
+    borrowerName: 'Alice',
+    bookTitle: 'Clean Code',
+    author: 'Robert C. Martin'
+  }
+]
+
+// Task 8: Number of returned books per borrower
+db.loans.aggregate([
+  {
+    $match: { status: "Returned" }
+  },
+  {
+    $group: {
+      _id: "$borrowerId",
+      returnedCount: { $sum: 1 }
+    }
+  },
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "_id",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      borrowerName: "$borrowerInfo.name",
+      returnedCount: 1
+    }
+  },
+  {
+    $sort: { returnedCount: -1 }
+  }
+])
+
+// Output:
+[
+  { _id: 'User1', returnedCount: 2, borrowerName: 'Alice' },
+  { _id: 'User4', returnedCount: 1, borrowerName: 'David' },
+  { _id: 'User2', returnedCount: 1, borrowerName: 'Bob' }
+]
+
+// Task 9: Borrowers who borrowed multiple genres
+db.loans.aggregate([
+  {
+    $lookup: {
+      from: "books",
+      localField: "bookId",
+      foreignField: "_id",
+      as: "bookInfo"
+    }
+  },
+  {
+    $unwind: "$bookInfo"
+  },
+  {
+    $group: {
+      _id: "$borrowerId",
+      genres: { $addToSet: "$bookInfo.genre" }
+    }
+  },
+  {
+    $match: {
+      $expr: { $gt: [{ $size: "$genres" }, 1] }
+    }
+  },
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "_id",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      borrowerName: "$borrowerInfo.name",
+      genres: 1,
+      genreCount: { $size: "$genres" }
+    }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'User1',
+    genres: [ 'Self-help', 'Fiction', 'Programming' ],
+    borrowerName: 'Alice',
+    genreCount: 3
+  }
+]
+
+// Task 10: List borrowers with total borrow count and names
+db.loans.aggregate([
+  {
+    $group: {
+      _id: "$borrowerId",
+      totalBorrowCount: { $sum: 1 }
+    }
+  },
+  {
+    $lookup: {
+      from: "borrowers",
+      localField: "_id",
+      foreignField: "_id",
+      as: "borrowerInfo"
+    }
+  },
+  {
+    $unwind: "$borrowerInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      borrowerName: "$borrowerInfo.name",
+      email: "$borrowerInfo.email",
+      totalBorrowCount: 1
+    }
+  },
+  {
+    $sort: { totalBorrowCount: -1 }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 'User1',
+    totalBorrowCount: 5,
+    borrowerName: 'Alice',
+    email: 'alice@example.com'
+  },
+  {
+    _id: 'User3',
+    totalBorrowCount: 2,
+    borrowerName: 'Charlie',
+    email: 'charlie@example.com'
+  },
+  {
+    _id: 'User2',
+    totalBorrowCount: 1,
+    borrowerName: 'Bob',
+    email: 'bob@example.com'
+  },
+  {
+    _id: 'User4',
+    totalBorrowCount: 1,
+    borrowerName: 'David',
+    email: 'david@example.com'
+  }
+]

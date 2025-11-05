@@ -1,0 +1,209 @@
+Mongo Aggregation : CustomerOrderAnalysis
+
+// 1. Find the total amount spent by each customer
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$customerId",
+      totalSpent: { $sum: "$amount" }
+    }
+  }
+])
+
+// Output:
+[
+  { _id: 'C1005', totalSpent: 900 },
+  { _id: 'C1004', totalSpent: 400 },
+  { _id: 'C1003', totalSpent: 700 },
+  { _id: 'C1002', totalSpent: 2000 },
+  { _id: 'C1001', totalSpent: 800 }
+]
+
+// 2. Retrieve order details along with corresponding customer information
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customerDetails"
+    }
+  },
+  {
+    $unwind: "$customerDetails"
+  }
+])
+
+// Output:
+[
+  {
+    _id: 1,
+    customerId: 'C1001',
+    amount: 500,
+    product: 'Laptop',
+    customerDetails: { _id: 'C1001', name: 'Alice', city: 'New York' }
+  },
+  {
+    _id: 2,
+    customerId: 'C1002',
+    amount: 1200,
+    product: 'Phone',
+    customerDetails: { _id: 'C1002', name: 'Bob', city: 'Los Angeles' }
+  },
+  {
+    _id: 3,
+    customerId: 'C1001',
+    amount: 300,
+    product: 'Headphones',
+    customerDetails: { _id: 'C1001', name: 'Alice', city: 'New York' }
+  },
+  {
+    _id: 4,
+    customerId: 'C1003',
+    amount: 700,
+    product: 'Monitor',
+    customerDetails: { _id: 'C1003', name: 'Charlie', city: 'Chicago' }
+  },
+  {
+    _id: 5,
+    customerId: 'C1004',
+    amount: 400,
+    product: 'Keyboard',
+    customerDetails: { _id: 'C1004', name: 'David', city: 'Houston' }
+  },
+  {
+    _id: 6,
+    customerId: 'C1002',
+    amount: 800,
+    product: 'Tablet',
+    customerDetails: { _id: 'C1002', name: 'Bob', city: 'Los Angeles' }
+  },
+  {
+    _id: 7,
+    customerId: 'C1005',
+    amount: 900,
+    product: 'Smartwatch',
+    customerDetails: { _id: 'C1005', name: 'Eve', city: 'Seattle' }
+  }
+]
+
+// 3. Find orders where the amount is greater than Rs. 500
+db.orders.aggregate([
+  {
+    $match: {
+      amount: { $gt: 500 }
+    }
+  }
+])
+
+// Output:
+[
+  { _id: 2, customerId: 'C1002', amount: 1200, product: 'Phone' },
+  { _id: 4, customerId: 'C1003', amount: 700, product: 'Monitor' },
+  { _id: 6, customerId: 'C1002', amount: 800, product: 'Tablet' },
+  { _id: 7, customerId: 'C1005', amount: 900, product: 'Smartwatch' }
+]
+
+// 4. Calculate the average order amount per customer
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$customerId",
+      averageOrderAmount: { $avg: "$amount" }
+    }
+  }
+])
+
+// Output:
+[
+  { _id: 'C1005', averageOrderAmount: 900 },
+  { _id: 'C1004', averageOrderAmount: 400 },
+  { _id: 'C1003', averageOrderAmount: 700 },
+  { _id: 'C1002', averageOrderAmount: 1000 },
+  { _id: 'C1001', averageOrderAmount: 400 }
+]
+
+// 5. Retrieve all orders with customer details, ensuring each order has an associated customer record
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customerInfo"
+    }
+  },
+  {
+    $unwind: "$customerInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      customerId: 1,
+      amount: 1,
+      product: 1,
+      customerName: "$customerInfo.name",
+      customerCity: "$customerInfo.city"
+    }
+  }
+])
+
+// Output:
+[
+  {
+    _id: 1,
+    customerId: 'C1001',
+    amount: 500,
+    product: 'Laptop',
+    customerName: 'Alice',
+    customerCity: 'New York'
+  },
+  {
+    _id: 2,
+    customerId: 'C1002',
+    amount: 1200,
+    product: 'Phone',
+    customerName: 'Bob',
+    customerCity: 'Los Angeles'
+  },
+  {
+    _id: 3,
+    customerId: 'C1001',
+    amount: 300,
+    product: 'Headphones',
+    customerName: 'Alice',
+    customerCity: 'New York'
+  },
+  {
+    _id: 4,
+    customerId: 'C1003',
+    amount: 700,
+    product: 'Monitor',
+    customerName: 'Charlie',
+    customerCity: 'Chicago'
+  },
+  {
+    _id: 5,
+    customerId: 'C1004',
+    amount: 400,
+    product: 'Keyboard',
+    customerName: 'David',
+    customerCity: 'Houston'
+  },
+  {
+    _id: 6,
+    customerId: 'C1002',
+    amount: 800,
+    product: 'Tablet',
+    customerName: 'Bob',
+    customerCity: 'Los Angeles'
+  },
+  {
+    _id: 7,
+    customerId: 'C1005',
+    amount: 900,
+    product: 'Smartwatch',
+    customerName: 'Eve',
+    customerCity: 'Seattle'
+  }
+]

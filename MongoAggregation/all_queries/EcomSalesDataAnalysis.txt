@@ -1,0 +1,233 @@
+MongoDB Aggregrations: Ecommerce Sales Data Analysis
+
+// 1. Top 3 best-selling products by quantity sold
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$productName",
+      totalQuantitySold: { $sum: "$quantity" }
+    }
+  },
+  {
+    $sort: { totalQuantitySold: -1 }
+  },
+  {
+    $limit: 3
+  }
+])
+
+// Output:
+[
+  { _id: 'T-shirt', totalQuantitySold: 14 },
+  { _id: 'Shoes', totalQuantitySold: 5 },
+  { _id: 'iPhone 14', totalQuantitySold: 5 }
+]
+
+// 2. Total revenue for each product category
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      totalRevenue: { $sum: "$totalPrice" }
+    }
+  },
+  {
+    $sort: { totalRevenue: -1 }
+  }
+])
+
+// Output:
+[
+  { _id: 'Electronics', totalRevenue: 5450 },
+  { _id: 'Clothing', totalRevenue: 630 },
+  { _id: 'Home Appliances', totalRevenue: 490 }
+]
+
+// 3. Average total price of all orders
+db.orders.aggregate([
+  {
+    $group: {
+      _id: null,
+      averageOrderPrice: { $avg: "$totalPrice" }
+    }
+  }
+])
+
+// Output:
+[
+  { _id: null, averageOrderPrice: 444.6666666666667 }
+]
+
+// 4. Number of orders placed each month
+db.orders.aggregate([
+  {
+    $addFields: {
+      month: { $dateToString: { format: "%Y-%m", date: "$orderDate" } }
+    }
+  },
+  {
+    $group: {
+      _id: "$month",
+      numberOfOrders: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { _id: 1 }
+  }
+])
+
+// Output:
+[
+  { _id: '2024-11', numberOfOrders: 2 },
+  { _id: '2024-12', numberOfOrders: 2 },
+  { _id: '2025-01', numberOfOrders: 2 },
+  { _id: '2025-02', numberOfOrders: 2 },
+  { _id: '2025-03', numberOfOrders: 3 },
+  { _id: '2025-04', numberOfOrders: 4 }
+]
+
+// 5. Percentage of canceled orders
+db.orders.aggregate([
+  {
+    $facet: {
+      totalOrders: [
+        { $count: "count" }
+      ],
+      canceledOrders: [
+        { $match: { status: "Cancelled" } },
+        { $count: "count" }
+      ]
+    }
+  },
+  {
+    $project: {
+      totalOrders: { $arrayElemAt: ["$totalOrders.count", 0] },
+      canceledOrders: { $arrayElemAt: ["$canceledOrders.count", 0] }
+    }
+  },
+  {
+    $project: {
+      totalOrders: 1,
+      canceledOrders: 1,
+      canceledPercentage: {
+        $multiply: [
+          { $divide: ["$canceledOrders", "$totalOrders"] },
+          100
+        ]
+      }
+    }
+  }
+])
+
+// Output:
+[
+  {
+    totalOrders: 15,
+    canceledOrders: 2,
+    canceledPercentage: 13.333333333333334
+  }
+]
+
+// 6. Top product category by revenue
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      totalRevenue: { $sum: "$totalPrice" }
+    }
+  },
+  {
+    $sort: { totalRevenue: -1 }
+  },
+  {
+    $limit: 1
+  }
+])
+
+// Output:
+[
+  { _id: 'Electronics', totalRevenue: 5450 }
+]
+
+// 7. Most frequently ordered product
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$productName",
+      orderCount: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { orderCount: -1 }
+  },
+  {
+    $limit: 1
+  }
+])
+
+// Output:
+[
+  { _id: 'T-shirt', orderCount: 4 }
+]
+
+// 8. Monthly revenue trend
+db.orders.aggregate([
+  {
+    $addFields: {
+      month: { $dateToString: { format: "%Y-%m", date: "$orderDate" } }
+    }
+  },
+  {
+    $group: {
+      _id: "$month",
+      monthlyRevenue: { $sum: "$totalPrice" }
+    }
+  },
+  {
+    $sort: { _id: 1 }
+  }
+])
+
+// Output:
+[
+  { _id: '2024-11', monthlyRevenue: 2100 },
+  { _id: '2024-12', monthlyRevenue: 1040 },
+  { _id: '2025-01', monthlyRevenue: 270 },
+  { _id: '2025-02', monthlyRevenue: 1210 },
+  { _id: '2025-03', monthlyRevenue: 600 },
+  { _id: '2025-04', monthlyRevenue: 1350 }
+]
+
+// 9. Count of orders by status
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$status",
+      orderCount: { $sum: 1 }
+    }
+  }
+])
+
+// Output:
+[
+  { _id: 'Delivered', orderCount: 9 },
+  { _id: 'Cancelled', orderCount: 2 },
+  { _id: 'Shipped', orderCount: 2 },
+  { _id: 'Pending', orderCount: 2 }
+]
+
+// 10. Total number of orders and quantity sold
+db.orders.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalOrders: { $sum: 1 },
+      totalQuantitySold: { $sum: "$quantity" }
+    }
+  }
+])
+
+// Output:
+[
+  { _id: null, totalOrders: 15, totalQuantitySold: 29 }
+]
