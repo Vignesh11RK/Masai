@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Test
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update      # automatically create/update tables (for dev)
+    show-sql: true          # logs generated SQL statements
+    properties:
+      hibernate:
+        format_sql: true
+#  database-platform: org.hibernate.dialect.PostgreSQLDialect
