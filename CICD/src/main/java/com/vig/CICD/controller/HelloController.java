@@ -1,6 +1,5 @@
 package com.vig.CICD.controller;
 
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,5 +9,10 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello() {
         return "Hello, CI/CD World!";
+    }
+
+    @GetMapping("/")
+    public String root() {
+        return "Welcome to CI/CD!";
     }
 }
